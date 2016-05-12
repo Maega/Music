@@ -27,6 +27,7 @@ Partial Class Form1
         Me.WebView1 = New EO.WebBrowser.WebView()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.DragPane = New System.Windows.Forms.Panel()
+        Me.btnMini = New System.Windows.Forms.Button()
         Me.DragPaneDark = New System.Windows.Forms.Panel()
         Me.btnAdmin = New System.Windows.Forms.Button()
         Me.btnKill = New System.Windows.Forms.Button()
@@ -41,6 +42,8 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ttpPrototype = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.DragPane.SuspendLayout()
         Me.DragPaneDark.SuspendLayout()
         Me.pnlLogo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -61,10 +64,11 @@ Partial Class Form1
         '
         'WebView1
         '
-        Me.WebView1.Url = "music.maeganetwork.com"
+        Me.WebView1.Url = "music.maeganetwork.com/appload.html"
         '
         'Button1
         '
+        Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.ForeColor = System.Drawing.Color.White
         Me.Button1.Location = New System.Drawing.Point(1047, 0)
@@ -78,13 +82,31 @@ Partial Class Form1
         'DragPane
         '
         Me.DragPane.BackColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.DragPane.Controls.Add(Me.Button2)
+        Me.DragPane.Controls.Add(Me.btnMini)
         Me.DragPane.Location = New System.Drawing.Point(1, 2)
         Me.DragPane.Name = "DragPane"
         Me.DragPane.Size = New System.Drawing.Size(222, 21)
         Me.DragPane.TabIndex = 2
         '
+        'btnMini
+        '
+        Me.btnMini.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnMini.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnMini.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.btnMini.ForeColor = System.Drawing.Color.White
+        Me.btnMini.Location = New System.Drawing.Point(3, 0)
+        Me.btnMini.Name = "btnMini"
+        Me.btnMini.Size = New System.Drawing.Size(63, 21)
+        Me.btnMini.TabIndex = 7
+        Me.btnMini.Text = "Minify"
+        Me.ttpPrototype.SetToolTip(Me.btnMini, "Displays program information")
+        Me.btnMini.UseVisualStyleBackColor = True
+        '
         'DragPaneDark
         '
+        Me.DragPaneDark.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DragPaneDark.BackColor = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(25, Byte), Integer), CType(CType(27, Byte), Integer))
         Me.DragPaneDark.Controls.Add(Me.btnAdmin)
         Me.DragPaneDark.Controls.Add(Me.btnKill)
@@ -99,6 +121,7 @@ Partial Class Form1
         '
         'btnAdmin
         '
+        Me.btnAdmin.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnAdmin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAdmin.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
         Me.btnAdmin.ForeColor = System.Drawing.Color.White
@@ -112,6 +135,7 @@ Partial Class Form1
         '
         'btnKill
         '
+        Me.btnKill.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnKill.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnKill.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
         Me.btnKill.ForeColor = System.Drawing.Color.White
@@ -125,6 +149,7 @@ Partial Class Form1
         '
         'btnAbout
         '
+        Me.btnAbout.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnAbout.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
         Me.btnAbout.ForeColor = System.Drawing.Color.White
@@ -138,6 +163,7 @@ Partial Class Form1
         '
         'btnReset
         '
+        Me.btnReset.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnReset.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
         Me.btnReset.ForeColor = System.Drawing.Color.White
@@ -150,6 +176,7 @@ Partial Class Form1
         '
         'btnDebug
         '
+        Me.btnDebug.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnDebug.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
         Me.btnDebug.ForeColor = System.Drawing.Color.White
@@ -171,15 +198,14 @@ Partial Class Form1
         Me.lblLoading.Size = New System.Drawing.Size(424, 84)
         Me.lblLoading.TabIndex = 4
         Me.lblLoading.Text = "Loading Engine..."
+        Me.lblLoading.Visible = False
         '
         'tmrLoading
         '
-        Me.tmrLoading.Enabled = True
         Me.tmrLoading.Interval = 5
         '
         'tmrLoadGone
         '
-        Me.tmrLoadGone.Enabled = True
         Me.tmrLoadGone.Interval = 7000
         '
         'pnlLogo
@@ -192,6 +218,7 @@ Partial Class Form1
         Me.pnlLogo.Name = "pnlLogo"
         Me.pnlLogo.Size = New System.Drawing.Size(406, 191)
         Me.pnlLogo.TabIndex = 5
+        Me.pnlLogo.Visible = False
         '
         'Label2
         '
@@ -202,6 +229,7 @@ Partial Class Form1
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "MILESTONE 1"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.Label2.Visible = False
         '
         'Label1
         '
@@ -211,6 +239,7 @@ Partial Class Form1
         Me.Label1.Size = New System.Drawing.Size(225, 92)
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Music"
+        Me.Label1.Visible = False
         '
         'PictureBox1
         '
@@ -221,6 +250,21 @@ Partial Class Form1
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
+        Me.PictureBox1.Visible = False
+        '
+        'Button2
+        '
+        Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.Button2.ForeColor = System.Drawing.Color.White
+        Me.Button2.Location = New System.Drawing.Point(80, 0)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(63, 21)
+        Me.Button2.TabIndex = 8
+        Me.Button2.Text = "DeMinify"
+        Me.ttpPrototype.SetToolTip(Me.Button2, "Displays program information")
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -238,6 +282,7 @@ Partial Class Form1
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
         Me.TransparencyKey = System.Drawing.Color.Fuchsia
+        Me.DragPane.ResumeLayout(False)
         Me.DragPaneDark.ResumeLayout(False)
         Me.pnlLogo.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -263,4 +308,6 @@ Partial Class Form1
     Friend WithEvents ttpPrototype As ToolTip
     Friend WithEvents btnKill As Button
     Friend WithEvents btnAdmin As Button
+    Friend WithEvents btnMini As Button
+    Friend WithEvents Button2 As Button
 End Class

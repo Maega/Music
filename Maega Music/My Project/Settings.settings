@@ -11,5 +11,11 @@
     <Setting Name="userbeta" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="savedwidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1300</Value>
+    </Setting>
+    <Setting Name="savedheight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">700</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -1,8 +1,182 @@
-﻿Public Class Form1
+﻿Imports System.Runtime.InteropServices
+
+Public Class Form1
     'Declarations
     Dim drag As Boolean
     Dim mousex As Integer
     Dim mousey As Integer
+
+#Region "Resize"
+
+    Dim onFullScreen As Boolean
+    Dim maximized As Boolean
+    Dim on_MinimumSize As Boolean
+    Dim minimumWidth As Short = 900
+    Dim minimumHeight As Short = 26
+    Dim borderSpace As Short = 20
+    Dim borderDiameter As Short = 7
+
+    Dim onBorderRight As Boolean
+    Dim onBorderLeft As Boolean
+    Dim onBorderTop As Boolean
+    Dim onBorderBottom As Boolean
+    Dim onCornerTopRight As Boolean
+    Dim onCornerTopLeft As Boolean
+    Dim onCornerBottomRight As Boolean
+    Dim onCornerBottomLeft As Boolean
+
+    Dim movingRight As Boolean
+    Dim movingLeft As Boolean
+    Dim movingTop As Boolean
+    Dim movingBottom As Boolean
+    Dim movingCornerTopRight As Boolean
+    Dim movingCornerTopLeft As Boolean
+    Dim movingCornerBottomRight As Boolean
+    Dim movingCornerBottomLeft As Boolean
+
+    Private Sub Borderless_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles WebView1.MouseDown
+        If Me.Width >= 410 And Me.Width <= 450 Then
+            Exit Sub
+        End If
+        If e.Button = System.Windows.Forms.MouseButtons.Left Then
+            If onBorderRight Then movingRight = True Else movingRight = False
+            If onBorderLeft Then movingLeft = True Else movingLeft = False
+            If onBorderTop Then movingTop = True Else movingTop = False
+            If onBorderBottom Then movingBottom = True Else movingBottom = False
+            If onCornerTopRight Then movingCornerTopRight = True Else movingCornerTopRight = False
+            If onCornerTopLeft Then movingCornerTopLeft = True Else movingCornerTopLeft = False
+            If onCornerBottomRight Then movingCornerBottomRight = True Else movingCornerBottomRight = False
+            If onCornerBottomLeft Then movingCornerBottomLeft = True Else movingCornerBottomLeft = False
+        End If
+    End Sub
+
+    Private Sub Borderless_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles WebView1.MouseUp
+        stopResizer()
+        If Me.Width >= 410 And Me.Width <= 450 Then
+            Exit Sub
+        End If
+        My.Settings.savedheight = Me.Height
+        My.Settings.savedwidth = Me.Width
+    End Sub
+
+    Private Sub Borderless_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles WebView1.MouseMove
+        If onFullScreen Or maximized Then Exit Sub
+
+        If Me.Width <= minimumWidth Then Me.Width = (minimumWidth + 5) : on_MinimumSize = True
+        If Me.Height <= minimumHeight Then Me.Height = (minimumHeight + 5) : on_MinimumSize = True
+        If on_MinimumSize Then stopResizer() Else startResizer()
+
+
+        If (Cursor.Position.X > (Me.Location.X + Me.Width) - borderDiameter) _
+            And (Cursor.Position.Y > (Me.Location.Y + borderSpace)) _
+            And (Cursor.Position.Y < ((Me.Location.Y + Me.Height) - borderSpace)) Then
+            Me.Cursor = Cursors.SizeWE
+            onBorderRight = True
+
+        ElseIf (Cursor.Position.X < (Me.Location.X + borderDiameter)) _
+            And (Cursor.Position.Y > (Me.Location.Y + borderSpace)) _
+            And (Cursor.Position.Y < ((Me.Location.Y + Me.Height) - borderSpace)) Then
+            Me.Cursor = Cursors.SizeWE
+            onBorderLeft = True
+
+        ElseIf (Cursor.Position.Y < (Me.Location.Y + borderDiameter)) _
+            And (Cursor.Position.X > (Me.Location.X + borderSpace)) _
+            And (Cursor.Position.X < ((Me.Location.X + Me.Width) - borderSpace)) Then
+            Me.Cursor = Cursors.SizeNS
+            onBorderTop = True
+
+        ElseIf (Cursor.Position.Y > ((Me.Location.Y + Me.Height) - borderDiameter)) _
+            And (Cursor.Position.X > (Me.Location.X + borderSpace)) _
+            And (Cursor.Position.X < ((Me.Location.X + Me.Width) - borderSpace)) Then
+            Me.Cursor = Cursors.SizeNS
+            onBorderBottom = True
+
+        ElseIf (Cursor.Position.X = ((Me.Location.X + Me.Width) - 1)) _
+            And (Cursor.Position.Y = Me.Location.Y) Then
+            Me.Cursor = Cursors.SizeNESW
+            onCornerTopRight = True
+
+        ElseIf (Cursor.Position.X = Me.Location.X) _
+            And (Cursor.Position.Y = Me.Location.Y) Then
+            Me.Cursor = Cursors.SizeNWSE
+            onCornerTopLeft = True
+
+        ElseIf (Cursor.Position.X = ((Me.Location.X + Me.Width) - 1)) _
+            And (Cursor.Position.Y = ((Me.Location.Y + Me.Height) - 1)) Then
+            Me.Cursor = Cursors.SizeNWSE
+            onCornerBottomRight = True
+
+        ElseIf (Cursor.Position.X = Me.Location.X) _
+            And (Cursor.Position.Y = ((Me.Location.Y + Me.Height) - 1)) Then
+            Me.Cursor = Cursors.SizeNESW
+            onCornerBottomLeft = True
+
+        Else
+            onBorderRight = False
+            onBorderLeft = False
+            onBorderTop = False
+            onBorderBottom = False
+            onCornerTopRight = False
+            onCornerTopLeft = False
+            onCornerBottomRight = False
+            onCornerBottomLeft = False
+            Me.Cursor = Cursors.Default
+        End If
+    End Sub
+
+    Private Sub startResizer()
+        Select Case True
+
+            Case movingRight
+                Me.Width = (Cursor.Position.X - Me.Location.X)
+
+            Case movingLeft
+                Me.Width = ((Me.Width + Me.Location.X) - Cursor.Position.X)
+                Me.Location = New Point(Cursor.Position.X, Me.Location.Y)
+
+            Case movingTop
+                Me.Height = ((Me.Height + Me.Location.Y) - Cursor.Position.Y)
+                Me.Location = New Point(Me.Location.X, Cursor.Position.Y)
+
+            Case movingBottom
+                Me.Height = (Cursor.Position.Y - Me.Location.Y)
+
+            Case movingCornerTopRight
+                Me.Width = (Cursor.Position.X - Me.Location.X)
+                Me.Height = ((Me.Location.Y - Cursor.Position.Y) + Me.Height)
+                Me.Location = New Point(Me.Location.X, Cursor.Position.Y)
+
+            Case movingCornerTopLeft
+                Me.Width = ((Me.Width + Me.Location.X) - Cursor.Position.X)
+                Me.Location = New Point(Cursor.Position.X, Me.Location.Y)
+                Me.Height = ((Me.Height + Me.Location.Y) - Cursor.Position.Y)
+                Me.Location = New Point(Me.Location.X, Cursor.Position.Y)
+
+            Case movingCornerBottomRight
+                Me.Size = New Point((Cursor.Position.X - Me.Location.X), (Cursor.Position.Y - Me.Location.Y))
+
+            Case movingCornerBottomLeft
+                Me.Width = ((Me.Width + Me.Location.X) - Cursor.Position.X)
+                Me.Height = (Cursor.Position.Y - Me.Location.Y)
+                Me.Location = New Point(Cursor.Position.X, Me.Location.Y)
+
+        End Select
+    End Sub
+
+    Private Sub stopResizer()
+        movingRight = False
+        movingLeft = False
+        movingTop = False
+        movingBottom = False
+        movingCornerTopRight = False
+        movingCornerTopLeft = False
+        movingCornerBottomRight = False
+        movingCornerBottomLeft = False
+        Me.Cursor = Cursors.Default
+        Threading.Thread.Sleep(300)
+        on_MinimumSize = False
+    End Sub
+#End Region
 
     Private Sub Form1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DragPane.MouseDown, DragPaneDark.MouseDown
         drag = True 'Sets the variable drag to true.
@@ -24,6 +198,8 @@
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If My.Settings.savedwidth <= 500 Then My.Settings.savedwidth = 1300
+        My.Settings.Save()
         Application.Exit()
     End Sub
 
@@ -63,7 +239,9 @@
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btnAbout.Click
-        MsgBox("Maega Music" + vbNewLine + "Maega Music Client for Microsoft Windows" + vbNewLine + "Version: 1.0 - Milestone 1" + vbNewLine + vbNewLine + "This prototype software is not intended for release. It's designed for inhouse testing of different technologies that could be used to develop a Windows client for Maega Music. THIS SOFTWARE IS NOT FOR DISTRIBUTION!")
+        'MsgBox("Maega Music" + vbNewLine + "Maega Music Client for Microsoft Windows" + vbNewLine + "Version: 1.0 - Milestone 1" + vbNewLine + vbNewLine + "This prototype software is not intended for release. It's designed for inhouse testing of different technologies that could be used to develop a Windows client for Maega Music. THIS SOFTWARE IS NOT FOR DISTRIBUTION!")
+        Me.Width = Me.Width + 50
+        Me.Height = Me.Height + 50
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles btnKill.Click
@@ -81,6 +259,8 @@
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Me.Height = My.Settings.savedheight
+        Me.Width = My.Settings.savedwidth
         If My.Settings.userbeta = True Then
             btnAdmin.Hide()
             btnDebug.Hide()
@@ -89,6 +269,19 @@
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+        WebView1.LoadUrl("http://music.maeganetwork.com")
+    End Sub
+
+    Private Sub btnMini_Click(sender As Object, e As EventArgs) Handles btnMini.Click
+        minimumWidth = 430
+        Me.Width = 430
+        WebView1.LoadUrl("http://music.maeganetwork.com")
+    End Sub
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+        minimumWidth = 900
+        Me.Width = My.Settings.savedwidth
+        Me.Height = My.Settings.savedheight
         WebView1.LoadUrl("http://music.maeganetwork.com")
     End Sub
 End Class

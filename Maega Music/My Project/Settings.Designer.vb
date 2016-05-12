@@ -89,6 +89,30 @@ Namespace My
                 Me("userbeta") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1300")>  _
+        Public Property savedwidth() As Integer
+            Get
+                Return CType(Me("savedwidth"),Integer)
+            End Get
+            Set
+                Me("savedwidth") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("700")>  _
+        Public Property savedheight() As Integer
+            Get
+                Return CType(Me("savedheight"),Integer)
+            End Get
+            Set
+                Me("savedheight") = value
+            End Set
+        End Property
     End Class
 End Namespace
 
