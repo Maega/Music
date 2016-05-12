@@ -77,6 +77,18 @@ Namespace My
                 Me("dosequential") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property userbeta() As Boolean
+            Get
+                Return CType(Me("userbeta"),Boolean)
+            End Get
+            Set
+                Me("userbeta") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

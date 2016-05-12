@@ -29,10 +29,10 @@ Partial Class Form1
         Me.DragPane = New System.Windows.Forms.Panel()
         Me.DragPaneDark = New System.Windows.Forms.Panel()
         Me.btnAdmin = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnKill = New System.Windows.Forms.Button()
+        Me.btnAbout = New System.Windows.Forms.Button()
+        Me.btnReset = New System.Windows.Forms.Button()
+        Me.btnDebug = New System.Windows.Forms.Button()
         Me.lblLoading = New System.Windows.Forms.Label()
         Me.tmrLoading = New System.Windows.Forms.Timer(Me.components)
         Me.tmrLoadGone = New System.Windows.Forms.Timer(Me.components)
@@ -61,7 +61,7 @@ Partial Class Form1
         '
         'WebView1
         '
-        Me.WebView1.Url = "maeganetwork.com/music/premium"
+        Me.WebView1.Url = "music.maeganetwork.com"
         '
         'Button1
         '
@@ -87,10 +87,10 @@ Partial Class Form1
         '
         Me.DragPaneDark.BackColor = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(25, Byte), Integer), CType(CType(27, Byte), Integer))
         Me.DragPaneDark.Controls.Add(Me.btnAdmin)
-        Me.DragPaneDark.Controls.Add(Me.Button5)
-        Me.DragPaneDark.Controls.Add(Me.Button4)
-        Me.DragPaneDark.Controls.Add(Me.Button3)
-        Me.DragPaneDark.Controls.Add(Me.Button2)
+        Me.DragPaneDark.Controls.Add(Me.btnKill)
+        Me.DragPaneDark.Controls.Add(Me.btnAbout)
+        Me.DragPaneDark.Controls.Add(Me.btnReset)
+        Me.DragPaneDark.Controls.Add(Me.btnDebug)
         Me.DragPaneDark.Controls.Add(Me.Button1)
         Me.DragPaneDark.Location = New System.Drawing.Point(222, 2)
         Me.DragPaneDark.Name = "DragPaneDark"
@@ -110,56 +110,56 @@ Partial Class Form1
         Me.ttpPrototype.SetToolTip(Me.btnAdmin, "Displays program information")
         Me.btnAdmin.UseVisualStyleBackColor = True
         '
-        'Button5
+        'btnKill
         '
-        Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.Button5.ForeColor = System.Drawing.Color.White
-        Me.Button5.Location = New System.Drawing.Point(1004, 0)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(37, 21)
-        Me.Button5.TabIndex = 5
-        Me.Button5.Text = "Kill"
-        Me.ttpPrototype.SetToolTip(Me.Button5, "Terminate the application immediately (unsafe)")
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.btnKill.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnKill.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.btnKill.ForeColor = System.Drawing.Color.White
+        Me.btnKill.Location = New System.Drawing.Point(1004, 0)
+        Me.btnKill.Name = "btnKill"
+        Me.btnKill.Size = New System.Drawing.Size(37, 21)
+        Me.btnKill.TabIndex = 5
+        Me.btnKill.Text = "Kill"
+        Me.ttpPrototype.SetToolTip(Me.btnKill, "Terminate the application immediately (unsafe)")
+        Me.btnKill.UseVisualStyleBackColor = True
         '
-        'Button4
+        'btnAbout
         '
-        Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.Button4.ForeColor = System.Drawing.Color.White
-        Me.Button4.Location = New System.Drawing.Point(728, 0)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(63, 21)
-        Me.Button4.TabIndex = 4
-        Me.Button4.Text = "About"
-        Me.ttpPrototype.SetToolTip(Me.Button4, "Displays program information")
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btnAbout.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnAbout.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.btnAbout.ForeColor = System.Drawing.Color.White
+        Me.btnAbout.Location = New System.Drawing.Point(728, 0)
+        Me.btnAbout.Name = "btnAbout"
+        Me.btnAbout.Size = New System.Drawing.Size(63, 21)
+        Me.btnAbout.TabIndex = 4
+        Me.btnAbout.Text = "About"
+        Me.ttpPrototype.SetToolTip(Me.btnAbout, "Displays program information")
+        Me.btnAbout.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnReset
         '
-        Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.Button3.ForeColor = System.Drawing.Color.White
-        Me.Button3.Location = New System.Drawing.Point(866, 0)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(63, 21)
-        Me.Button3.TabIndex = 3
-        Me.Button3.Text = "Reset"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnReset.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.btnReset.ForeColor = System.Drawing.Color.White
+        Me.btnReset.Location = New System.Drawing.Point(866, 0)
+        Me.btnReset.Name = "btnReset"
+        Me.btnReset.Size = New System.Drawing.Size(63, 21)
+        Me.btnReset.TabIndex = 3
+        Me.btnReset.Text = "Reset"
+        Me.btnReset.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnDebug
         '
-        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
-        Me.Button2.ForeColor = System.Drawing.Color.White
-        Me.Button2.Location = New System.Drawing.Point(935, 0)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(63, 21)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Debug"
-        Me.ttpPrototype.SetToolTip(Me.Button2, "Launches debugging implementation")
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDebug.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.0!)
+        Me.btnDebug.ForeColor = System.Drawing.Color.White
+        Me.btnDebug.Location = New System.Drawing.Point(935, 0)
+        Me.btnDebug.Name = "btnDebug"
+        Me.btnDebug.Size = New System.Drawing.Size(63, 21)
+        Me.btnDebug.TabIndex = 2
+        Me.btnDebug.Text = "Debug"
+        Me.ttpPrototype.SetToolTip(Me.btnDebug, "Launches debugging implementation")
+        Me.btnDebug.UseVisualStyleBackColor = True
         '
         'lblLoading
         '
@@ -200,7 +200,7 @@ Partial Class Form1
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(162, 31)
         Me.Label2.TabIndex = 2
-        Me.Label2.Text = "PROTOTYPE B6.1"
+        Me.Label2.Text = "MILESTONE 1"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'Label1
@@ -257,10 +257,10 @@ Partial Class Form1
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button4 As Button
-    Friend WithEvents Button3 As Button
+    Friend WithEvents btnDebug As Button
+    Friend WithEvents btnAbout As Button
+    Friend WithEvents btnReset As Button
     Friend WithEvents ttpPrototype As ToolTip
-    Friend WithEvents Button5 As Button
+    Friend WithEvents btnKill As Button
     Friend WithEvents btnAdmin As Button
 End Class

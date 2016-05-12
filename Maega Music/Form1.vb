@@ -62,15 +62,15 @@
         pnlLogo.Visible = False
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        MsgBox("Maega Music" + vbNewLine + "Maega Music Client for Microsoft Windows" + vbNewLine + "Version: PROTOTYPE B6.1" + vbNewLine + vbNewLine + "This prototype software is not intended for release. It's designed for inhouse testing of different technologies that could be used to develop a Windows client for Maega Music. THIS SOFTWARE IS NOT FOR DISTRIBUTION!")
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btnAbout.Click
+        MsgBox("Maega Music" + vbNewLine + "Maega Music Client for Microsoft Windows" + vbNewLine + "Version: 1.0 - Milestone 1" + vbNewLine + vbNewLine + "This prototype software is not intended for release. It's designed for inhouse testing of different technologies that could be used to develop a Windows client for Maega Music. THIS SOFTWARE IS NOT FOR DISTRIBUTION!")
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles btnKill.Click
         End
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnDebug.Click
         frmDBGSettings.Show()
     End Sub
 
@@ -81,10 +81,14 @@
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        If My.Settings.userbeta = True Then
+            btnAdmin.Hide()
+            btnDebug.Hide()
+            btnKill.Hide()
+        End If
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnReset.Click
         WebView1.LoadUrl("http://music.maeganetwork.com")
     End Sub
 End Class
