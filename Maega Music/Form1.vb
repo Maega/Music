@@ -12,9 +12,9 @@ Public Class Form1
     Dim maximized As Boolean
     Dim on_MinimumSize As Boolean
     Dim minimumWidth As Short = 900
-    Dim minimumHeight As Short = 26
+    Dim minimumHeight As Short = 400
     Dim borderSpace As Short = 20
-    Dim borderDiameter As Short = 7
+    Dim borderDiameter As Short = 8
 
     Dim onBorderRight As Boolean
     Dim onBorderLeft As Boolean
@@ -238,23 +238,19 @@ Public Class Form1
         pnlLogo.Visible = False
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btnAbout.Click
-        'MsgBox("Maega Music" + vbNewLine + "Maega Music Client for Microsoft Windows" + vbNewLine + "Version: 1.0 - Milestone 1" + vbNewLine + vbNewLine + "This prototype software is not intended for release. It's designed for inhouse testing of different technologies that could be used to develop a Windows client for Maega Music. THIS SOFTWARE IS NOT FOR DISTRIBUTION!")
-        Me.Width = Me.Width + 50
-        Me.Height = Me.Height + 50
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btnAbout.LinkClicked
+        MsgBox("Maega Music" + vbNewLine + "Maega Music Client for Microsoft Windows" + vbNewLine + "Version: 1.0 - Milestone 1" + vbNewLine + vbNewLine + "This milestone beta is not intended for production use. It's designed for development testing and for bleeding edge users interested in trying out pre-release software. This beta uses unlicensed libraries from Essential Objects, these will be purchased or removed before a production release." + vbNewLine + vbNewLine + "Known Issues:" + vbNewLine + "Resizing the form too small will cause the resize handles to disappear.")
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles btnKill.Click
-        End
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnDebug.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnDebug.LinkClicked
         frmDBGSettings.Show()
     End Sub
 
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles btnAdmin.Click
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles btnAdmin.LinkClicked
         If My.Settings.adminenabled = True Then
             WebView1.LoadUrl("http://music.maeganetwork.com/#/admin/settings")
+        Else
+            MsgBox("The admin link is currently disabled. You can enable it from 'Debug'.", MsgBoxStyle.Exclamation)
         End If
     End Sub
 
@@ -264,24 +260,40 @@ Public Class Form1
         If My.Settings.userbeta = True Then
             btnAdmin.Hide()
             btnDebug.Hide()
-            btnKill.Hide()
+            btnReset.Hide()
         End If
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnReset.LinkClicked
         WebView1.LoadUrl("http://music.maeganetwork.com")
     End Sub
 
-    Private Sub btnMini_Click(sender As Object, e As EventArgs) Handles btnMini.Click
-        minimumWidth = 430
-        Me.Width = 430
-        WebView1.LoadUrl("http://music.maeganetwork.com")
+    Private Sub btnMini_Click(sender As Object, e As EventArgs) Handles btnMini.LinkClicked
+        If minimumWidth = 430 Then
+            minimumWidth = 900
+            Me.Width = My.Settings.savedwidth
+            Me.Height = My.Settings.savedheight
+            btnMini.Text = "Minify"
+            btnAdmin.Show()
+            btnDebug.Show()
+            btnReset.Show()
+            WebView1.LoadUrl("http://music.maeganetwork.com")
+        Else
+            minimumWidth = 430
+            Me.Width = 430
+            btnMini.Text = "Maxify"
+            btnAdmin.Hide()
+            btnDebug.Hide()
+            btnReset.Hide()
+            WebView1.LoadUrl("http://music.maeganetwork.com")
+        End If
     End Sub
 
-    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
-        minimumWidth = 900
-        Me.Width = My.Settings.savedwidth
-        Me.Height = My.Settings.savedheight
-        WebView1.LoadUrl("http://music.maeganetwork.com")
+    Private Sub btnMini_Click(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles btnMini.LinkClicked
+
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles btnDebug.LinkClicked
+
     End Sub
 End Class

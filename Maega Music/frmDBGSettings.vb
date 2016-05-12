@@ -33,11 +33,12 @@
     End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
-        MsgBox("You must be signed in as an admin otherwise the admin button won't redirect you anywhere")
         My.Settings.adminenabled = True
+        MsgBox("The admin link has been enabled, however it will only function for correctly authenticated users.", MsgBoxStyle.Exclamation)
     End Sub
 
     Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
         My.Settings.adminenabled = False
+        MsgBox("The admin link has been disabled.", MsgBoxStyle.Exclamation)
     End Sub
 End Class
