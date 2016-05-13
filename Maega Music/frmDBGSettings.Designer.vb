@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmDBGSettings
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmDBGSettings
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -130,7 +130,7 @@ Partial Class frmDBGSettings
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(127, 33)
         Me.Button9.TabIndex = 9
-        Me.Button9.Text = "Enable Admin Button"
+        Me.Button9.Text = "Admin"
         Me.Button9.UseVisualStyleBackColor = True
         '
         'Button10
@@ -141,7 +141,7 @@ Partial Class frmDBGSettings
         Me.Button10.Name = "Button10"
         Me.Button10.Size = New System.Drawing.Size(127, 33)
         Me.Button10.TabIndex = 8
-        Me.Button10.Text = "Disable Admin Button"
+        Me.Button10.Text = "Reload"
         Me.Button10.UseVisualStyleBackColor = True
         '
         'frmDBGSettings

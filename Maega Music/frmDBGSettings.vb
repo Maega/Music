@@ -33,12 +33,10 @@
     End Sub
 
     Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
-        My.Settings.adminenabled = True
-        MsgBox("The admin link has been enabled, however it will only function for correctly authenticated users.", MsgBoxStyle.Exclamation)
+        Form1.WebView1.LoadUrl("http://music.maeganetwork.com/#/admin/settings")
     End Sub
 
     Private Sub Button10_Click(sender As Object, e As EventArgs) Handles Button10.Click
-        My.Settings.adminenabled = False
-        MsgBox("The admin link has been disabled.", MsgBoxStyle.Exclamation)
+        Form1.WebView1.LoadUrl("http://music.maeganetwork.com")
     End Sub
 End Class

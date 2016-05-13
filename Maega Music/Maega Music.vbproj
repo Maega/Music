@@ -59,6 +59,9 @@
       <HintPath>..\packages\EO.WebBrowser.16.0.7.0\lib\EO.WebEngine.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="gGlowBox">
+      <HintPath>..\..\..\..\..\Desktop\gGlowBox\gGlowBox\bin\Debug\gGlowBox.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />

@@ -28,12 +28,11 @@ Partial Class Form1
         Me.Button1 = New System.Windows.Forms.Button()
         Me.DragPane = New System.Windows.Forms.Panel()
         Me.DragPaneDark = New System.Windows.Forms.Panel()
-        Me.btnMPlay = New System.Windows.Forms.LinkLabel()
-        Me.btnAdmin = New System.Windows.Forms.LinkLabel()
-        Me.btnDebug = New System.Windows.Forms.LinkLabel()
-        Me.btnReset = New System.Windows.Forms.LinkLabel()
-        Me.btnAbout = New System.Windows.Forms.LinkLabel()
-        Me.btnMini = New System.Windows.Forms.LinkLabel()
+        Me.btnDebug = New System.Windows.Forms.Button()
+        Me.btnCompact = New System.Windows.Forms.Button()
+        Me.btnMinimise = New System.Windows.Forms.Button()
+        Me.btnHelp = New System.Windows.Forms.Button()
+        Me.btnxsmall = New System.Windows.Forms.Button()
         Me.lblLoading = New System.Windows.Forms.Label()
         Me.tmrLoading = New System.Windows.Forms.Timer(Me.components)
         Me.tmrLoadGone = New System.Windows.Forms.Timer(Me.components)
@@ -42,11 +41,9 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ttpPrototype = New System.Windows.Forms.ToolTip(Me.components)
-        Me.pnlWeb = New System.Windows.Forms.Panel()
         Me.DragPaneDark.SuspendLayout()
         Me.pnlLogo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pnlWeb.SuspendLayout()
         Me.SuspendLayout()
         '
         'WebControl1
@@ -55,9 +52,9 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.WebControl1.BackColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
-        Me.WebControl1.Location = New System.Drawing.Point(1, 0)
+        Me.WebControl1.Location = New System.Drawing.Point(1, 23)
         Me.WebControl1.Name = "WebControl1"
-        Me.WebControl1.Size = New System.Drawing.Size(1295, 675)
+        Me.WebControl1.Size = New System.Drawing.Size(1296, 676)
         Me.WebControl1.TabIndex = 0
         Me.WebControl1.Text = "WebControl1"
         Me.WebControl1.WebView = Me.WebView1
@@ -70,15 +67,16 @@ Partial Class Form1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(1042, -2)
+        Me.Button1.Location = New System.Drawing.Point(1042, -1)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(34, 23)
+        Me.Button1.Size = New System.Drawing.Size(34, 24)
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "X"
-        Me.ttpPrototype.SetToolTip(Me.Button1, "Terminate the application (Application.Exit)")
+        Me.ttpPrototype.SetToolTip(Me.Button1, "Quit Maega Music")
         Me.Button1.UseVisualStyleBackColor = True
         '
         'DragPane
@@ -94,95 +92,96 @@ Partial Class Form1
         Me.DragPaneDark.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.DragPaneDark.BackColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
-        Me.DragPaneDark.Controls.Add(Me.btnMPlay)
-        Me.DragPaneDark.Controls.Add(Me.btnAdmin)
         Me.DragPaneDark.Controls.Add(Me.btnDebug)
-        Me.DragPaneDark.Controls.Add(Me.btnReset)
-        Me.DragPaneDark.Controls.Add(Me.btnAbout)
-        Me.DragPaneDark.Controls.Add(Me.btnMini)
+        Me.DragPaneDark.Controls.Add(Me.btnCompact)
+        Me.DragPaneDark.Controls.Add(Me.btnMinimise)
+        Me.DragPaneDark.Controls.Add(Me.btnHelp)
+        Me.DragPaneDark.Controls.Add(Me.btnxsmall)
         Me.DragPaneDark.Controls.Add(Me.Button1)
         Me.DragPaneDark.Location = New System.Drawing.Point(222, 2)
         Me.DragPaneDark.Name = "DragPaneDark"
         Me.DragPaneDark.Size = New System.Drawing.Size(1075, 21)
         Me.DragPaneDark.TabIndex = 3
         '
-        'btnMPlay
-        '
-        Me.btnMPlay.ActiveLinkColor = System.Drawing.Color.White
-        Me.btnMPlay.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnMPlay.AutoSize = True
-        Me.btnMPlay.LinkColor = System.Drawing.Color.White
-        Me.btnMPlay.Location = New System.Drawing.Point(793, 5)
-        Me.btnMPlay.Name = "btnMPlay"
-        Me.btnMPlay.Size = New System.Drawing.Size(37, 13)
-        Me.btnMPlay.TabIndex = 13
-        Me.btnMPlay.TabStop = True
-        Me.btnMPlay.Text = "xSmall"
-        '
-        'btnAdmin
-        '
-        Me.btnAdmin.ActiveLinkColor = System.Drawing.Color.White
-        Me.btnAdmin.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAdmin.AutoSize = True
-        Me.btnAdmin.LinkColor = System.Drawing.Color.White
-        Me.btnAdmin.Location = New System.Drawing.Point(833, 5)
-        Me.btnAdmin.Name = "btnAdmin"
-        Me.btnAdmin.Size = New System.Drawing.Size(36, 13)
-        Me.btnAdmin.TabIndex = 12
-        Me.btnAdmin.TabStop = True
-        Me.btnAdmin.Text = "Admin"
-        '
         'btnDebug
         '
-        Me.btnDebug.ActiveLinkColor = System.Drawing.Color.White
         Me.btnDebug.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnDebug.AutoSize = True
-        Me.btnDebug.LinkColor = System.Drawing.Color.White
-        Me.btnDebug.Location = New System.Drawing.Point(875, 5)
+        Me.btnDebug.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnDebug.FlatAppearance.BorderSize = 0
+        Me.btnDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDebug.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.btnDebug.ForeColor = System.Drawing.Color.White
+        Me.btnDebug.Location = New System.Drawing.Point(872, -1)
         Me.btnDebug.Name = "btnDebug"
-        Me.btnDebug.Size = New System.Drawing.Size(39, 13)
-        Me.btnDebug.TabIndex = 11
-        Me.btnDebug.TabStop = True
-        Me.btnDebug.Text = "Debug"
+        Me.btnDebug.Size = New System.Drawing.Size(34, 24)
+        Me.btnDebug.TabIndex = 18
+        Me.btnDebug.Text = "!"
+        Me.ttpPrototype.SetToolTip(Me.btnDebug, "Enter Debug Settings")
+        Me.btnDebug.UseVisualStyleBackColor = True
         '
-        'btnReset
+        'btnCompact
         '
-        Me.btnReset.ActiveLinkColor = System.Drawing.Color.White
-        Me.btnReset.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnReset.AutoSize = True
-        Me.btnReset.LinkColor = System.Drawing.Color.White
-        Me.btnReset.Location = New System.Drawing.Point(920, 5)
-        Me.btnReset.Name = "btnReset"
-        Me.btnReset.Size = New System.Drawing.Size(35, 13)
-        Me.btnReset.TabIndex = 10
-        Me.btnReset.TabStop = True
-        Me.btnReset.Text = "Reset"
+        Me.btnCompact.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnCompact.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnCompact.FlatAppearance.BorderSize = 0
+        Me.btnCompact.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnCompact.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.btnCompact.ForeColor = System.Drawing.Color.White
+        Me.btnCompact.Location = New System.Drawing.Point(1008, -1)
+        Me.btnCompact.Name = "btnCompact"
+        Me.btnCompact.Size = New System.Drawing.Size(34, 24)
+        Me.btnCompact.TabIndex = 17
+        Me.btnCompact.Text = "<"
+        Me.ttpPrototype.SetToolTip(Me.btnCompact, "Enter Compact Mode")
+        Me.btnCompact.UseVisualStyleBackColor = True
         '
-        'btnAbout
+        'btnMinimise
         '
-        Me.btnAbout.ActiveLinkColor = System.Drawing.Color.White
-        Me.btnAbout.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAbout.AutoSize = True
-        Me.btnAbout.LinkColor = System.Drawing.Color.White
-        Me.btnAbout.Location = New System.Drawing.Point(961, 5)
-        Me.btnAbout.Name = "btnAbout"
-        Me.btnAbout.Size = New System.Drawing.Size(35, 13)
-        Me.btnAbout.TabIndex = 9
-        Me.btnAbout.TabStop = True
-        Me.btnAbout.Text = "About"
+        Me.btnMinimise.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnMinimise.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnMinimise.FlatAppearance.BorderSize = 0
+        Me.btnMinimise.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnMinimise.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.btnMinimise.ForeColor = System.Drawing.Color.White
+        Me.btnMinimise.Location = New System.Drawing.Point(906, -1)
+        Me.btnMinimise.Name = "btnMinimise"
+        Me.btnMinimise.Size = New System.Drawing.Size(34, 24)
+        Me.btnMinimise.TabIndex = 16
+        Me.btnMinimise.Text = "_"
+        Me.ttpPrototype.SetToolTip(Me.btnMinimise, "Minimise Maega Music")
+        Me.btnMinimise.UseVisualStyleBackColor = True
         '
-        'btnMini
+        'btnHelp
         '
-        Me.btnMini.ActiveLinkColor = System.Drawing.Color.White
-        Me.btnMini.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnMini.AutoSize = True
-        Me.btnMini.LinkColor = System.Drawing.Color.White
-        Me.btnMini.Location = New System.Drawing.Point(1002, 5)
-        Me.btnMini.Name = "btnMini"
-        Me.btnMini.Size = New System.Drawing.Size(34, 13)
-        Me.btnMini.TabIndex = 8
-        Me.btnMini.TabStop = True
-        Me.btnMini.Text = "Minify"
+        Me.btnHelp.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnHelp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnHelp.FlatAppearance.BorderSize = 0
+        Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.btnHelp.ForeColor = System.Drawing.Color.White
+        Me.btnHelp.Location = New System.Drawing.Point(940, -1)
+        Me.btnHelp.Name = "btnHelp"
+        Me.btnHelp.Size = New System.Drawing.Size(34, 24)
+        Me.btnHelp.TabIndex = 15
+        Me.btnHelp.Text = "?"
+        Me.ttpPrototype.SetToolTip(Me.btnHelp, "View Help/About")
+        Me.btnHelp.UseVisualStyleBackColor = True
+        '
+        'btnxsmall
+        '
+        Me.btnxsmall.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnxsmall.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnxsmall.FlatAppearance.BorderSize = 0
+        Me.btnxsmall.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnxsmall.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.btnxsmall.ForeColor = System.Drawing.Color.White
+        Me.btnxsmall.Location = New System.Drawing.Point(974, -1)
+        Me.btnxsmall.Name = "btnxsmall"
+        Me.btnxsmall.Size = New System.Drawing.Size(34, 24)
+        Me.btnxsmall.TabIndex = 14
+        Me.btnxsmall.Text = "<<"
+        Me.ttpPrototype.SetToolTip(Me.btnxsmall, "Enter MiniPlayer Mode")
+        Me.btnxsmall.UseVisualStyleBackColor = True
         '
         'lblLoading
         '
@@ -248,16 +247,15 @@ Partial Class Form1
         Me.PictureBox1.TabStop = False
         Me.PictureBox1.Visible = False
         '
-        'pnlWeb
+        'ttpPrototype
         '
-        Me.pnlWeb.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.pnlWeb.Controls.Add(Me.WebControl1)
-        Me.pnlWeb.Location = New System.Drawing.Point(2, 23)
-        Me.pnlWeb.Name = "pnlWeb"
-        Me.pnlWeb.Size = New System.Drawing.Size(1297, 675)
-        Me.pnlWeb.TabIndex = 6
+        Me.ttpPrototype.AutomaticDelay = 0
+        Me.ttpPrototype.AutoPopDelay = 0
+        Me.ttpPrototype.InitialDelay = 0
+        Me.ttpPrototype.IsBalloon = True
+        Me.ttpPrototype.ReshowDelay = 0
+        Me.ttpPrototype.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
+        Me.ttpPrototype.ToolTipTitle = "Information"
         '
         'Form1
         '
@@ -265,21 +263,19 @@ Partial Class Form1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Fuchsia
         Me.ClientSize = New System.Drawing.Size(1300, 700)
-        Me.Controls.Add(Me.pnlWeb)
         Me.Controls.Add(Me.pnlLogo)
         Me.Controls.Add(Me.lblLoading)
         Me.Controls.Add(Me.DragPaneDark)
         Me.Controls.Add(Me.DragPane)
+        Me.Controls.Add(Me.WebControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
         Me.TransparencyKey = System.Drawing.Color.Fuchsia
         Me.DragPaneDark.ResumeLayout(False)
-        Me.DragPaneDark.PerformLayout()
         Me.pnlLogo.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pnlWeb.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -297,11 +293,9 @@ Partial Class Form1
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents ttpPrototype As ToolTip
-    Friend WithEvents btnMini As LinkLabel
-    Friend WithEvents btnAbout As LinkLabel
-    Friend WithEvents btnDebug As LinkLabel
-    Friend WithEvents btnReset As LinkLabel
-    Friend WithEvents btnAdmin As LinkLabel
-    Friend WithEvents btnMPlay As LinkLabel
-    Friend WithEvents pnlWeb As Panel
+    Friend WithEvents btnxsmall As Button
+    Friend WithEvents btnMinimise As Button
+    Friend WithEvents btnHelp As Button
+    Friend WithEvents btnCompact As Button
+    Friend WithEvents btnDebug As Button
 End Class

@@ -35,6 +35,8 @@
     Private Sub Borderless_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles WebView1.MouseDown
         If Me.Width >= 410 And Me.Width <= 450 Then
             Exit Sub
+        ElseIf Me.Width >= 250 And Me.Width <= 300 Then
+            Exit Sub
         End If
         If e.Button = System.Windows.Forms.MouseButtons.Left Then
             If onBorderRight Then movingRight = True Else movingRight = False
@@ -51,6 +53,8 @@
     Private Sub Borderless_MouseUp(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles WebView1.MouseUp
         stopResizer()
         If Me.Width >= 410 And Me.Width <= 450 Then
+            Exit Sub
+        ElseIf Me.Width >= 250 And Me.Width <= 300 Then
             Exit Sub
         End If
         My.Settings.savedheight = Me.Height
@@ -210,16 +214,26 @@
 
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        If My.Settings.savedwidth <= 500 Then My.Settings.savedwidth = 1300
-        My.Settings.Save()
-        Application.Exit()
-    End Sub
-
-    Private Sub Button1_MouseEnter(sender As Object, e As EventArgs) Handles Button1.MouseEnter
-        Button1.BackColor = Color.Red
-    End Sub
-    Private Sub Button1_MouseLeave(sender As Object, e As EventArgs) Handles Button1.MouseLeave
-        Button1.BackColor = Color.FromArgb(37, 37, 40)
+        DragPane.Focus()
+        If Button1.Text = ">" Then
+            Me.Height = My.Settings.savedheight
+            Me.Width = My.Settings.savedwidth
+            CenterForm()
+            Invalidate()
+            btnHelp.Show()
+            btnDebug.Show()
+            btnCompact.Show()
+            btnxsmall.Show()
+            Me.TopMost = False
+            Me.Opacity = 1
+            ttpPrototype.SetToolTip(Me.Button1, "Quit Maega Music")
+            Button1.Text = "X"
+            WebView1.LoadUrl("http://music.maeganetwork.com")
+        Else
+            If My.Settings.savedwidth <= 500 Then My.Settings.savedwidth = 1300
+            My.Settings.Save()
+            Application.Exit()
+        End If
     End Sub
 
     Private Sub tmrLoading_Tick(sender As Object, e As EventArgs) Handles tmrLoading.Tick
@@ -257,68 +271,125 @@
         pnlLogo.Visible = False
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btnAbout.LinkClicked
-        MsgBox("Maega Music" + vbNewLine + "Maega Music Client for Microsoft Windows" + vbNewLine + "Version: 1.0 - Milestone 1" + vbNewLine + vbNewLine + "This milestone beta is not intended for production use. It's designed for development testing and for bleeding edge users interested in trying out pre-release software. This beta uses unlicensed libraries from Essential Objects, these will be purchased or removed before a production release." + vbNewLine + vbNewLine + "Known Issues:" + vbNewLine + "Resizing the form too small will cause the resize handles to disappear.")
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles btnDebug.LinkClicked
-        frmDBGSettings.Show()
-    End Sub
-
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles btnAdmin.LinkClicked
-        If My.Settings.adminenabled = True Then
-            WebView1.LoadUrl("http://music.maeganetwork.com/#/admin/settings")
-        Else
-            MsgBox("The admin link is currently disabled. You can enable it from 'Debug'.", MsgBoxStyle.Exclamation)
-        End If
+    Private Sub btnHelp_Click(sender As Object, e As EventArgs) Handles btnHelp.Click
+        My.Settings.adminenabled = True
+        MsgBox("The admin link has been enabled, however it will only function for correctly authenticated users.", MsgBoxStyle.Exclamation)
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Height = My.Settings.savedheight
         Me.Width = My.Settings.savedwidth
         If My.Settings.userbeta = True Then
-            btnAdmin.Hide()
             btnDebug.Hide()
-            btnReset.Hide()
         End If
         CenterForm()
     End Sub
 
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnReset.LinkClicked
+    Private Sub WebControl1_MouseEnter(sender As Object, e As EventArgs) Handles WebControl1.MouseEnter, DragPane.MouseEnter, DragPaneDark.MouseEnter, Me.MouseEnter
+        If Button1.Text = ">" Then Me.Opacity = 1
+    End Sub
+
+    Private Sub WebControl1_MouseLeave(sender As Object, e As EventArgs) Handles WebControl1.MouseLeave, DragPane.MouseLeave, DragPaneDark.MouseLeave, Me.MouseLeave
+        If Button1.Text = ">" Then Me.Opacity = 0.5
+    End Sub
+
+#Region "Button Enter and Leave Events"
+    Private Sub Button1_MouseEnter(sender As Object, e As EventArgs) Handles Button1.MouseEnter
+        Button1.BackColor = Color.Red
+        If Button1.Text = ">" Then Me.Opacity = 1
+    End Sub
+    Private Sub Button1_MouseLeave(sender As Object, e As EventArgs) Handles Button1.MouseLeave
+        Button1.BackColor = Color.FromArgb(37, 37, 40)
+        If Button1.Text = ">" Then Me.Opacity = 0.5
+    End Sub
+
+    Private Sub btnxsmall_MouseEnter(sender As Object, e As EventArgs) Handles btnxsmall.MouseEnter
+        btnxsmall.BackColor = Color.SteelBlue
+    End Sub
+
+    Private Sub btnxsmall_MouseLeave(sender As Object, e As EventArgs) Handles btnxsmall.MouseLeave
+        btnxsmall.BackColor = Color.FromArgb(37, 37, 40)
+    End Sub
+
+    Private Sub btnCompact_MouseEnter(sender As Object, e As EventArgs) Handles btnCompact.MouseEnter
+        btnCompact.BackColor = Color.SteelBlue
+    End Sub
+
+    Private Sub btnCompact_MouseLeave(sender As Object, e As EventArgs) Handles btnCompact.MouseLeave
+        btnCompact.BackColor = Color.FromArgb(37, 37, 40)
+    End Sub
+    Private Sub btnHelp_MouseEnter(sender As Object, e As EventArgs) Handles btnHelp.MouseEnter
+        btnHelp.BackColor = Color.SteelBlue
+    End Sub
+
+    Private Sub btnHelp_MouseLeave(sender As Object, e As EventArgs) Handles btnHelp.MouseLeave
+        btnHelp.BackColor = Color.FromArgb(37, 37, 40)
+    End Sub
+
+    Private Sub btnMinimise_MouseEnter(sender As Object, e As EventArgs) Handles btnMinimise.MouseEnter
+        btnMinimise.BackColor = Color.SteelBlue
+    End Sub
+
+    Private Sub btnMinimise_MouseLeave(sender As Object, e As EventArgs) Handles btnMinimise.MouseLeave
+        btnMinimise.BackColor = Color.FromArgb(37, 37, 40)
+    End Sub
+
+    Private Sub btnDebug_MouseEnter(sender As Object, e As EventArgs) Handles btnDebug.MouseEnter
+        btnDebug.BackColor = Color.Red
+    End Sub
+
+    Private Sub btnDebug_MouseLeave(sender As Object, e As EventArgs) Handles btnDebug.MouseLeave
+        btnDebug.BackColor = Color.FromArgb(37, 37, 40)
+    End Sub
+#End Region
+
+    Private Sub btnxsmall_Click(sender As Object, e As EventArgs) Handles btnxsmall.Click
+        DragPane.Focus()
+        minimumHeight = 5
+        minimumWidth = 5
+        Me.Width = 280
+        Me.Height = 73
+        Invalidate()
+        btnHelp.Hide()
+        btnDebug.Hide()
+        btnCompact.Hide()
+        btnxsmall.Hide()
+        Me.TopMost = True
+        Me.Opacity = 0.5
+        Dim xloc As Integer = Screen.PrimaryScreen.WorkingArea.Width - 300
+        Dim yloc As Integer = Screen.PrimaryScreen.WorkingArea.Height - 80
+        Me.Location = New Point(xloc, yloc)
+        ttpPrototype.SetToolTip(Me.Button1, "Return to Maega Music")
+        Button1.Text = ">"
         WebView1.LoadUrl("http://music.maeganetwork.com")
     End Sub
 
-    Private Sub btnMini_Click(sender As Object, e As EventArgs) Handles btnMini.LinkClicked
+    Private Sub btnCompact_Click(sender As Object, e As EventArgs) Handles btnCompact.Click
+        DragPane.Focus()
         If minimumWidth = 430 Then
             minimumWidth = 900
             Me.Width = My.Settings.savedwidth
             Me.Height = My.Settings.savedheight
-            btnMini.Text = "Minify"
-            btnAdmin.Show()
+            ttpPrototype.SetToolTip(Me.btnCompact, "Enter Compact Mode")
+            btnCompact.Text = "<"
             btnDebug.Show()
-            btnReset.Show()
             CenterForm()
             Invalidate()
             WebView1.LoadUrl("http://music.maeganetwork.com")
         Else
             minimumWidth = 430
             Me.Width = 430
-            btnMini.Text = "Maxify"
-            btnAdmin.Hide()
+            ttpPrototype.SetToolTip(Me.btnCompact, "Exit Compact Mode")
+            btnCompact.Text = ">"
             btnDebug.Hide()
-            btnReset.Hide()
             CenterForm()
             Invalidate()
             WebView1.LoadUrl("http://music.maeganetwork.com")
         End If
     End Sub
 
-    Private Sub btnMPlay_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles btnMPlay.LinkClicked
-        minimumHeight = 5
-        minimumWidth = 5
-        Me.Width = 280
-        Me.Height = 73
-        pnlWeb.Anchor = AnchorStyles.Bottom Or AnchorStyles.Left
-        WebView1.LoadUrl("http://music.maeganetwork.com")
+    Private Sub btnDebug_Click(sender As Object, e As EventArgs) Handles btnDebug.Click
+        DragPane.Focus()
+        frmDBGSettings.Show()
     End Sub
 End Class
