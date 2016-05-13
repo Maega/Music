@@ -57,9 +57,9 @@ Partial Class Form1
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.WebControl1.BackColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
-        Me.WebControl1.Location = New System.Drawing.Point(1, 23)
+        Me.WebControl1.Location = New System.Drawing.Point(1, 26)
         Me.WebControl1.Name = "WebControl1"
-        Me.WebControl1.Size = New System.Drawing.Size(1296, 676)
+        Me.WebControl1.Size = New System.Drawing.Size(1296, 673)
         Me.WebControl1.TabIndex = 0
         Me.WebControl1.Text = "WebControl1"
         Me.WebControl1.WebView = Me.WebView1
@@ -78,7 +78,7 @@ Partial Class Form1
         Me.Button1.ForeColor = System.Drawing.Color.White
         Me.Button1.Location = New System.Drawing.Point(1042, -1)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(34, 24)
+        Me.Button1.Size = New System.Drawing.Size(34, 27)
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "X"
         Me.ttpPrototype.SetToolTip(Me.Button1, "Quit Maega Music")
@@ -89,7 +89,7 @@ Partial Class Form1
         Me.DragPane.BackColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.DragPane.Location = New System.Drawing.Point(1, 2)
         Me.DragPane.Name = "DragPane"
-        Me.DragPane.Size = New System.Drawing.Size(222, 21)
+        Me.DragPane.Size = New System.Drawing.Size(222, 25)
         Me.DragPane.TabIndex = 2
         '
         'DragPaneDark
@@ -105,7 +105,7 @@ Partial Class Form1
         Me.DragPaneDark.Controls.Add(Me.Button1)
         Me.DragPaneDark.Location = New System.Drawing.Point(222, 2)
         Me.DragPaneDark.Name = "DragPaneDark"
-        Me.DragPaneDark.Size = New System.Drawing.Size(1075, 21)
+        Me.DragPaneDark.Size = New System.Drawing.Size(1075, 25)
         Me.DragPaneDark.TabIndex = 3
         '
         'btnDebug
@@ -118,7 +118,7 @@ Partial Class Form1
         Me.btnDebug.ForeColor = System.Drawing.Color.White
         Me.btnDebug.Location = New System.Drawing.Point(872, -1)
         Me.btnDebug.Name = "btnDebug"
-        Me.btnDebug.Size = New System.Drawing.Size(34, 24)
+        Me.btnDebug.Size = New System.Drawing.Size(34, 27)
         Me.btnDebug.TabIndex = 18
         Me.btnDebug.Text = "!"
         Me.ttpPrototype.SetToolTip(Me.btnDebug, "Enter Debug Settings")
@@ -134,7 +134,7 @@ Partial Class Form1
         Me.btnCompact.ForeColor = System.Drawing.Color.White
         Me.btnCompact.Location = New System.Drawing.Point(1008, -1)
         Me.btnCompact.Name = "btnCompact"
-        Me.btnCompact.Size = New System.Drawing.Size(34, 24)
+        Me.btnCompact.Size = New System.Drawing.Size(34, 27)
         Me.btnCompact.TabIndex = 17
         Me.btnCompact.Text = "<"
         Me.ttpPrototype.SetToolTip(Me.btnCompact, "Enter Compact Mode")
@@ -150,7 +150,7 @@ Partial Class Form1
         Me.btnMinimise.ForeColor = System.Drawing.Color.White
         Me.btnMinimise.Location = New System.Drawing.Point(906, -1)
         Me.btnMinimise.Name = "btnMinimise"
-        Me.btnMinimise.Size = New System.Drawing.Size(34, 24)
+        Me.btnMinimise.Size = New System.Drawing.Size(34, 27)
         Me.btnMinimise.TabIndex = 16
         Me.btnMinimise.Text = "_"
         Me.ttpPrototype.SetToolTip(Me.btnMinimise, "Minimise Maega Music")
@@ -166,7 +166,7 @@ Partial Class Form1
         Me.btnHelp.ForeColor = System.Drawing.Color.White
         Me.btnHelp.Location = New System.Drawing.Point(940, -1)
         Me.btnHelp.Name = "btnHelp"
-        Me.btnHelp.Size = New System.Drawing.Size(34, 24)
+        Me.btnHelp.Size = New System.Drawing.Size(34, 27)
         Me.btnHelp.TabIndex = 15
         Me.btnHelp.Text = "?"
         Me.ttpPrototype.SetToolTip(Me.btnHelp, "View Help/About")
@@ -182,7 +182,7 @@ Partial Class Form1
         Me.btnxsmall.ForeColor = System.Drawing.Color.White
         Me.btnxsmall.Location = New System.Drawing.Point(974, -1)
         Me.btnxsmall.Name = "btnxsmall"
-        Me.btnxsmall.Size = New System.Drawing.Size(34, 24)
+        Me.btnxsmall.Size = New System.Drawing.Size(34, 27)
         Me.btnxsmall.TabIndex = 14
         Me.btnxsmall.Text = "<<"
         Me.ttpPrototype.SetToolTip(Me.btnxsmall, "Enter MiniPlayer Mode")
