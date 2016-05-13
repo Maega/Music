@@ -285,11 +285,11 @@
         CenterForm()
     End Sub
 
-    Private Sub WebControl1_MouseEnter(sender As Object, e As EventArgs) Handles WebControl1.MouseEnter, DragPane.MouseEnter, DragPaneDark.MouseEnter, Me.MouseEnter
+    Private Sub WebControl1_MouseEnter(sender As Object, e As EventArgs) Handles WebControl1.MouseEnter, DragPane.MouseEnter, DragPaneDark.MouseEnter, Me.MouseEnter, WebView1.MouseEnter
         If Button1.Text = ">" Then Me.Opacity = 1
     End Sub
 
-    Private Sub WebControl1_MouseLeave(sender As Object, e As EventArgs) Handles WebControl1.MouseLeave, DragPane.MouseLeave, DragPaneDark.MouseLeave, Me.MouseLeave
+    Private Sub WebControl1_MouseLeave(sender As Object, e As EventArgs) Handles WebControl1.MouseLeave, DragPane.MouseLeave, DragPaneDark.MouseLeave, Me.MouseLeave, WebView1.MouseEnter
         If Button1.Text = ">" Then Me.Opacity = 0.5
     End Sub
 
@@ -391,5 +391,18 @@
     Private Sub btnDebug_Click(sender As Object, e As EventArgs) Handles btnDebug.Click
         DragPane.Focus()
         frmDBGSettings.Show()
+    End Sub
+
+    Private Sub btnMinimise_Click(sender As Object, e As EventArgs) Handles btnMinimise.Click
+        Me.Hide()
+        ntfTray.ShowBalloonTip(500)
+    End Sub
+
+    Private Sub cxtShowHide_Click(sender As Object, e As EventArgs) Handles cxtShowHide.Click
+        If Me.Visible = False Then
+            Me.Show()
+        Else
+            Me.Hide()
+        End If
     End Sub
 End Class

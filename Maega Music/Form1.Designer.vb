@@ -23,6 +23,7 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.WebControl1 = New EO.WebBrowser.WinForm.WebControl()
         Me.WebView1 = New EO.WebBrowser.WebView()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -41,9 +42,13 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ttpPrototype = New System.Windows.Forms.ToolTip(Me.components)
+        Me.ntfTray = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.cxtTray = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.cxtShowHide = New System.Windows.Forms.ToolStripMenuItem()
         Me.DragPaneDark.SuspendLayout()
         Me.pnlLogo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.cxtTray.SuspendLayout()
         Me.SuspendLayout()
         '
         'WebControl1
@@ -257,6 +262,28 @@ Partial Class Form1
         Me.ttpPrototype.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info
         Me.ttpPrototype.ToolTipTitle = "Information"
         '
+        'ntfTray
+        '
+        Me.ntfTray.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info
+        Me.ntfTray.BalloonTipText = "To restore Maega Music, double click its icon in the tray"
+        Me.ntfTray.BalloonTipTitle = "Maega Music Minimised"
+        Me.ntfTray.ContextMenuStrip = Me.cxtTray
+        Me.ntfTray.Icon = CType(resources.GetObject("ntfTray.Icon"), System.Drawing.Icon)
+        Me.ntfTray.Text = "Maega Music"
+        Me.ntfTray.Visible = True
+        '
+        'cxtTray
+        '
+        Me.cxtTray.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cxtShowHide})
+        Me.cxtTray.Name = "cxtTray"
+        Me.cxtTray.Size = New System.Drawing.Size(134, 26)
+        '
+        'cxtShowHide
+        '
+        Me.cxtShowHide.Name = "cxtShowHide"
+        Me.cxtShowHide.Size = New System.Drawing.Size(133, 22)
+        Me.cxtShowHide.Text = "Show/Hide"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -276,6 +303,7 @@ Partial Class Form1
         Me.DragPaneDark.ResumeLayout(False)
         Me.pnlLogo.ResumeLayout(False)
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.cxtTray.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -298,4 +326,7 @@ Partial Class Form1
     Friend WithEvents btnHelp As Button
     Friend WithEvents btnCompact As Button
     Friend WithEvents btnDebug As Button
+    Friend WithEvents ntfTray As NotifyIcon
+    Friend WithEvents cxtTray As ContextMenuStrip
+    Friend WithEvents cxtShowHide As ToolStripMenuItem
 End Class
