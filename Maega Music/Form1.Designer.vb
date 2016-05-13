@@ -54,7 +54,7 @@ Partial Class Form1
         Me.WebControl1.BackColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.WebControl1.Location = New System.Drawing.Point(1, 23)
         Me.WebControl1.Name = "WebControl1"
-        Me.WebControl1.Size = New System.Drawing.Size(1299, 676)
+        Me.WebControl1.Size = New System.Drawing.Size(1296, 676)
         Me.WebControl1.TabIndex = 0
         Me.WebControl1.Text = "WebControl1"
         Me.WebControl1.WebView = Me.WebView1
@@ -66,11 +66,13 @@ Partial Class Form1
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
         Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(1047, 0)
+        Me.Button1.Location = New System.Drawing.Point(1042, -2)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(28, 21)
+        Me.Button1.Size = New System.Drawing.Size(34, 23)
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "X"
         Me.ttpPrototype.SetToolTip(Me.Button1, "Terminate the application (Application.Exit)")
@@ -97,7 +99,7 @@ Partial Class Form1
         Me.DragPaneDark.Controls.Add(Me.Button1)
         Me.DragPaneDark.Location = New System.Drawing.Point(222, 2)
         Me.DragPaneDark.Name = "DragPaneDark"
-        Me.DragPaneDark.Size = New System.Drawing.Size(1078, 21)
+        Me.DragPaneDark.Size = New System.Drawing.Size(1075, 21)
         Me.DragPaneDark.TabIndex = 3
         '
         'btnAdmin
@@ -106,7 +108,7 @@ Partial Class Form1
         Me.btnAdmin.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnAdmin.AutoSize = True
         Me.btnAdmin.LinkColor = System.Drawing.Color.White
-        Me.btnAdmin.Location = New System.Drawing.Point(828, 4)
+        Me.btnAdmin.Location = New System.Drawing.Point(833, 5)
         Me.btnAdmin.Name = "btnAdmin"
         Me.btnAdmin.Size = New System.Drawing.Size(36, 13)
         Me.btnAdmin.TabIndex = 12
@@ -119,7 +121,7 @@ Partial Class Form1
         Me.btnDebug.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnDebug.AutoSize = True
         Me.btnDebug.LinkColor = System.Drawing.Color.White
-        Me.btnDebug.Location = New System.Drawing.Point(870, 4)
+        Me.btnDebug.Location = New System.Drawing.Point(875, 5)
         Me.btnDebug.Name = "btnDebug"
         Me.btnDebug.Size = New System.Drawing.Size(39, 13)
         Me.btnDebug.TabIndex = 11
@@ -132,7 +134,7 @@ Partial Class Form1
         Me.btnReset.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnReset.AutoSize = True
         Me.btnReset.LinkColor = System.Drawing.Color.White
-        Me.btnReset.Location = New System.Drawing.Point(915, 4)
+        Me.btnReset.Location = New System.Drawing.Point(920, 5)
         Me.btnReset.Name = "btnReset"
         Me.btnReset.Size = New System.Drawing.Size(35, 13)
         Me.btnReset.TabIndex = 10
@@ -145,7 +147,7 @@ Partial Class Form1
         Me.btnAbout.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnAbout.AutoSize = True
         Me.btnAbout.LinkColor = System.Drawing.Color.White
-        Me.btnAbout.Location = New System.Drawing.Point(956, 4)
+        Me.btnAbout.Location = New System.Drawing.Point(961, 5)
         Me.btnAbout.Name = "btnAbout"
         Me.btnAbout.Size = New System.Drawing.Size(35, 13)
         Me.btnAbout.TabIndex = 9
@@ -158,7 +160,7 @@ Partial Class Form1
         Me.btnMini.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnMini.AutoSize = True
         Me.btnMini.LinkColor = System.Drawing.Color.White
-        Me.btnMini.Location = New System.Drawing.Point(997, 4)
+        Me.btnMini.Location = New System.Drawing.Point(1002, 5)
         Me.btnMini.Name = "btnMini"
         Me.btnMini.Size = New System.Drawing.Size(34, 13)
         Me.btnMini.TabIndex = 8

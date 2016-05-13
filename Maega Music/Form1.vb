@@ -1,6 +1,4 @@
-﻿Imports System.Runtime.InteropServices
-
-Public Class Form1
+﻿Public Class Form1
     'Declarations
     Dim drag As Boolean
     Dim mousex As Integer
@@ -57,6 +55,7 @@ Public Class Form1
         End If
         My.Settings.savedheight = Me.Height
         My.Settings.savedwidth = Me.Width
+        Invalidate()
     End Sub
 
     Private Sub Borderless_MouseMove(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles WebView1.MouseMove
@@ -178,6 +177,19 @@ Public Class Form1
     End Sub
 #End Region
 
+    Private Sub CenterForm()
+        Me.Left = (Screen.PrimaryScreen.WorkingArea.Width - Me.Width) / 2
+        Me.Top = (Screen.PrimaryScreen.WorkingArea.Height - Me.Height) / 2
+    End Sub
+
+    Protected Overrides Sub OnPaintBackground(ByVal e As PaintEventArgs)
+        MyBase.OnPaintBackground(e)
+
+        Dim rect As New Rectangle(0, 0, Me.ClientSize.Width - 1, Me.ClientSize.Height - 1)
+
+        e.Graphics.DrawRectangle(Pens.White, rect)
+    End Sub
+
     Private Sub Form1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DragPane.MouseDown, DragPaneDark.MouseDown
         drag = True 'Sets the variable drag to true.
         mousex = System.Windows.Forms.Cursor.Position.X - Me.Left 'Sets variable mousex
@@ -201,6 +213,13 @@ Public Class Form1
         If My.Settings.savedwidth <= 500 Then My.Settings.savedwidth = 1300
         My.Settings.Save()
         Application.Exit()
+    End Sub
+
+    Private Sub Button1_MouseEnter(sender As Object, e As EventArgs) Handles Button1.MouseEnter
+        Button1.BackColor = Color.Red
+    End Sub
+    Private Sub Button1_MouseLeave(sender As Object, e As EventArgs) Handles Button1.MouseLeave
+        Button1.BackColor = Color.FromArgb(37, 37, 40)
     End Sub
 
     Private Sub tmrLoading_Tick(sender As Object, e As EventArgs) Handles tmrLoading.Tick
@@ -262,6 +281,7 @@ Public Class Form1
             btnDebug.Hide()
             btnReset.Hide()
         End If
+        CenterForm()
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnReset.LinkClicked
@@ -277,6 +297,8 @@ Public Class Form1
             btnAdmin.Show()
             btnDebug.Show()
             btnReset.Show()
+            CenterForm()
+            Invalidate()
             WebView1.LoadUrl("http://music.maeganetwork.com")
         Else
             minimumWidth = 430
@@ -285,15 +307,9 @@ Public Class Form1
             btnAdmin.Hide()
             btnDebug.Hide()
             btnReset.Hide()
+            CenterForm()
+            Invalidate()
             WebView1.LoadUrl("http://music.maeganetwork.com")
         End If
-    End Sub
-
-    Private Sub btnMini_Click(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles btnMini.LinkClicked
-
-    End Sub
-
-    Private Sub Button2_Click(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles btnDebug.LinkClicked
-
     End Sub
 End Class
