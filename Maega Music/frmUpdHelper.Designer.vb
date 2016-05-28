@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class LoadFrm
+Partial Class frmUpdHelper
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -22,17 +22,15 @@ Partial Class LoadFrm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LoadFrm))
         Me.SuspendLayout()
         '
-        'LoadFrm
+        'frmUpdHelper
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(126, 26)
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.Name = "LoadFrm"
-        Me.Text = "LoadFrm"
+        Me.ClientSize = New System.Drawing.Size(695, 294)
+        Me.Name = "frmUpdHelper"
+        Me.Text = "frmUpdHelper"
         Me.ResumeLayout(False)
 
     End Sub

@@ -113,6 +113,54 @@ Namespace My
                 Me("savedheight") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("0.5")>  _
+        Public Property miniopacity() As Decimal
+            Get
+                Return CType(Me("miniopacity"),Decimal)
+            End Get
+            Set
+                Me("miniopacity") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property compactopacity() As Decimal
+            Get
+                Return CType(Me("compactopacity"),Decimal)
+            End Get
+            Set
+                Me("compactopacity") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("white")>  _
+        Public Property bordercolour() As String
+            Get
+                Return CType(Me("bordercolour"),String)
+            End Get
+            Set
+                Me("bordercolour") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
+        Public Property mainopacity() As Decimal
+            Get
+                Return CType(Me("mainopacity"),Decimal)
+            End Get
+            Set
+                Me("mainopacity") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

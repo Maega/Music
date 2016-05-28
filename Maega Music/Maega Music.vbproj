@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <StartupObject>Maega_Music.My.MyApplication</StartupObject>
     <RootNamespace>Maega_Music</RootNamespace>
-    <AssemblyName>Maega Music</AssemblyName>
+    <AssemblyName>music</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
@@ -21,7 +21,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>Maega Music.xml</DocumentationFile>
+    <DocumentationFile>music.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -31,7 +31,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>Maega Music.xml</DocumentationFile>
+    <DocumentationFile>music.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -45,6 +45,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>MasterLogo1088.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EO.Base, Version=16.0.7.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
@@ -87,6 +90,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DarkMatter.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,18 @@
       <DependentUpon>frmDBGSettings.vb</DependentUpon>
     </Compile>
     <Compile Include="frmDBGSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSettings.Designer.vb">
+      <DependentUpon>frmSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdHelper.Designer.vb">
+      <DependentUpon>frmUpdHelper.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdHelper.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoadFrm.Designer.vb">
@@ -121,6 +139,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ThemeContainer152.vb">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
@@ -128,6 +149,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDBGSettings.resx">
       <DependentUpon>frmDBGSettings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSettings.resx">
+      <DependentUpon>frmSettings.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdHelper.resx">
+      <DependentUpon>frmUpdHelper.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoadFrm.resx">
       <DependentUpon>LoadFrm.vb</DependentUpon>
@@ -154,6 +181,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\logo_light.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MasterLogo1088.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

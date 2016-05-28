@@ -29,22 +29,23 @@ Partial Class Form1
         Me.Button1 = New System.Windows.Forms.Button()
         Me.DragPane = New System.Windows.Forms.Panel()
         Me.DragPaneDark = New System.Windows.Forms.Panel()
+        Me.btnSettings = New System.Windows.Forms.Button()
         Me.btnDebug = New System.Windows.Forms.Button()
         Me.btnCompact = New System.Windows.Forms.Button()
         Me.btnMinimise = New System.Windows.Forms.Button()
-        Me.btnHelp = New System.Windows.Forms.Button()
         Me.btnxsmall = New System.Windows.Forms.Button()
-        Me.lblLoading = New System.Windows.Forms.Label()
         Me.tmrLoading = New System.Windows.Forms.Timer(Me.components)
-        Me.tmrLoadGone = New System.Windows.Forms.Timer(Me.components)
         Me.pnlLogo = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ttpPrototype = New System.Windows.Forms.ToolTip(Me.components)
         Me.ntfTray = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.cxtTray = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.cxtShowHide = New System.Windows.Forms.ToolStripMenuItem()
+        Me.PreferencesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitMaegaMusicToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.tmrLoadGone = New System.Windows.Forms.Timer(Me.components)
+        Me.tmrBypassMsg = New System.Windows.Forms.Timer(Me.components)
         Me.DragPaneDark.SuspendLayout()
         Me.pnlLogo.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -71,22 +72,23 @@ Partial Class Form1
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Button1.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(244, Byte), Integer))
         Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.Button1.FlatAppearance.BorderSize = 0
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(1042, -1)
+        Me.Button1.Font = New System.Drawing.Font("Segoe UI Light", 8.25!)
+        Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.Button1.Location = New System.Drawing.Point(1041, -2)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(34, 27)
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "X"
         Me.ttpPrototype.SetToolTip(Me.Button1, "Quit Maega Music")
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = False
         '
         'DragPane
         '
-        Me.DragPane.BackColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.DragPane.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(244, Byte), Integer))
         Me.DragPane.Location = New System.Drawing.Point(1, 2)
         Me.DragPane.Name = "DragPane"
         Me.DragPane.Size = New System.Drawing.Size(222, 25)
@@ -96,123 +98,111 @@ Partial Class Form1
         '
         Me.DragPaneDark.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DragPaneDark.BackColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.DragPaneDark.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(244, Byte), Integer))
         Me.DragPaneDark.Controls.Add(Me.btnDebug)
-        Me.DragPaneDark.Controls.Add(Me.btnCompact)
-        Me.DragPaneDark.Controls.Add(Me.btnMinimise)
-        Me.DragPaneDark.Controls.Add(Me.btnHelp)
-        Me.DragPaneDark.Controls.Add(Me.btnxsmall)
         Me.DragPaneDark.Controls.Add(Me.Button1)
+        Me.DragPaneDark.Controls.Add(Me.btnSettings)
+        Me.DragPaneDark.Controls.Add(Me.btnCompact)
+        Me.DragPaneDark.Controls.Add(Me.btnxsmall)
+        Me.DragPaneDark.Controls.Add(Me.btnMinimise)
         Me.DragPaneDark.Location = New System.Drawing.Point(222, 2)
         Me.DragPaneDark.Name = "DragPaneDark"
         Me.DragPaneDark.Size = New System.Drawing.Size(1075, 25)
         Me.DragPaneDark.TabIndex = 3
         '
+        'btnSettings
+        '
+        Me.btnSettings.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSettings.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(244, Byte), Integer))
+        Me.btnSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnSettings.FlatAppearance.BorderSize = 0
+        Me.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSettings.Font = New System.Drawing.Font("Segoe UI Light", 8.25!)
+        Me.btnSettings.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.btnSettings.Location = New System.Drawing.Point(939, -2)
+        Me.btnSettings.Name = "btnSettings"
+        Me.btnSettings.Size = New System.Drawing.Size(34, 27)
+        Me.btnSettings.TabIndex = 19
+        Me.btnSettings.Text = "[ ]"
+        Me.ttpPrototype.SetToolTip(Me.btnSettings, "Enter Settings")
+        Me.btnSettings.UseVisualStyleBackColor = False
+        '
         'btnDebug
         '
         Me.btnDebug.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnDebug.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(244, Byte), Integer))
         Me.btnDebug.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnDebug.FlatAppearance.BorderSize = 0
         Me.btnDebug.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnDebug.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.btnDebug.ForeColor = System.Drawing.Color.White
-        Me.btnDebug.Location = New System.Drawing.Point(872, -1)
+        Me.btnDebug.Font = New System.Drawing.Font("Segoe UI Light", 8.25!)
+        Me.btnDebug.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.btnDebug.Location = New System.Drawing.Point(871, -2)
         Me.btnDebug.Name = "btnDebug"
         Me.btnDebug.Size = New System.Drawing.Size(34, 27)
         Me.btnDebug.TabIndex = 18
         Me.btnDebug.Text = "!"
         Me.ttpPrototype.SetToolTip(Me.btnDebug, "Enter Debug Settings")
-        Me.btnDebug.UseVisualStyleBackColor = True
+        Me.btnDebug.UseVisualStyleBackColor = False
         '
         'btnCompact
         '
         Me.btnCompact.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnCompact.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(244, Byte), Integer))
         Me.btnCompact.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnCompact.FlatAppearance.BorderSize = 0
         Me.btnCompact.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnCompact.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.btnCompact.ForeColor = System.Drawing.Color.White
-        Me.btnCompact.Location = New System.Drawing.Point(1008, -1)
+        Me.btnCompact.Font = New System.Drawing.Font("Segoe UI Light", 8.25!)
+        Me.btnCompact.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.btnCompact.Location = New System.Drawing.Point(1007, -2)
         Me.btnCompact.Name = "btnCompact"
         Me.btnCompact.Size = New System.Drawing.Size(34, 27)
         Me.btnCompact.TabIndex = 17
         Me.btnCompact.Text = "<"
         Me.ttpPrototype.SetToolTip(Me.btnCompact, "Enter Compact Mode")
-        Me.btnCompact.UseVisualStyleBackColor = True
+        Me.btnCompact.UseVisualStyleBackColor = False
         '
         'btnMinimise
         '
         Me.btnMinimise.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnMinimise.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(244, Byte), Integer))
         Me.btnMinimise.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnMinimise.FlatAppearance.BorderSize = 0
         Me.btnMinimise.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnMinimise.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.btnMinimise.ForeColor = System.Drawing.Color.White
-        Me.btnMinimise.Location = New System.Drawing.Point(906, -1)
+        Me.btnMinimise.Font = New System.Drawing.Font("Segoe UI Light", 8.25!)
+        Me.btnMinimise.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.btnMinimise.Location = New System.Drawing.Point(905, -2)
         Me.btnMinimise.Name = "btnMinimise"
         Me.btnMinimise.Size = New System.Drawing.Size(34, 27)
         Me.btnMinimise.TabIndex = 16
         Me.btnMinimise.Text = "_"
         Me.ttpPrototype.SetToolTip(Me.btnMinimise, "Minimise Maega Music")
-        Me.btnMinimise.UseVisualStyleBackColor = True
-        '
-        'btnHelp
-        '
-        Me.btnHelp.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnHelp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
-        Me.btnHelp.FlatAppearance.BorderSize = 0
-        Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHelp.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.btnHelp.ForeColor = System.Drawing.Color.White
-        Me.btnHelp.Location = New System.Drawing.Point(940, -1)
-        Me.btnHelp.Name = "btnHelp"
-        Me.btnHelp.Size = New System.Drawing.Size(34, 27)
-        Me.btnHelp.TabIndex = 15
-        Me.btnHelp.Text = "?"
-        Me.ttpPrototype.SetToolTip(Me.btnHelp, "View Help/About")
-        Me.btnHelp.UseVisualStyleBackColor = True
+        Me.btnMinimise.UseVisualStyleBackColor = False
         '
         'btnxsmall
         '
         Me.btnxsmall.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnxsmall.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(244, Byte), Integer))
         Me.btnxsmall.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnxsmall.FlatAppearance.BorderSize = 0
         Me.btnxsmall.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnxsmall.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.btnxsmall.ForeColor = System.Drawing.Color.White
-        Me.btnxsmall.Location = New System.Drawing.Point(974, -1)
+        Me.btnxsmall.Font = New System.Drawing.Font("Segoe UI Light", 8.25!)
+        Me.btnxsmall.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.btnxsmall.Location = New System.Drawing.Point(973, -2)
         Me.btnxsmall.Name = "btnxsmall"
         Me.btnxsmall.Size = New System.Drawing.Size(34, 27)
         Me.btnxsmall.TabIndex = 14
         Me.btnxsmall.Text = "<<"
         Me.ttpPrototype.SetToolTip(Me.btnxsmall, "Enter MiniPlayer Mode")
-        Me.btnxsmall.UseVisualStyleBackColor = True
-        '
-        'lblLoading
-        '
-        Me.lblLoading.BackColor = System.Drawing.Color.White
-        Me.lblLoading.Font = New System.Drawing.Font("Segoe UI Light", 40.0!)
-        Me.lblLoading.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.lblLoading.Location = New System.Drawing.Point(445, 319)
-        Me.lblLoading.Name = "lblLoading"
-        Me.lblLoading.Size = New System.Drawing.Size(424, 84)
-        Me.lblLoading.TabIndex = 4
-        Me.lblLoading.Text = "Loading Engine..."
-        Me.lblLoading.Visible = False
+        Me.btnxsmall.UseVisualStyleBackColor = False
         '
         'tmrLoading
         '
         Me.tmrLoading.Interval = 5
         '
-        'tmrLoadGone
-        '
-        Me.tmrLoadGone.Interval = 7000
-        '
         'pnlLogo
         '
-        Me.pnlLogo.BackColor = System.Drawing.Color.White
+        Me.pnlLogo.BackColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.pnlLogo.Controls.Add(Me.Label2)
-        Me.pnlLogo.Controls.Add(Me.Label1)
         Me.pnlLogo.Controls.Add(Me.PictureBox1)
         Me.pnlLogo.Location = New System.Drawing.Point(456, 442)
         Me.pnlLogo.Name = "pnlLogo"
@@ -223,34 +213,24 @@ Partial Class Form1
         'Label2
         '
         Me.Label2.Font = New System.Drawing.Font("Segoe UI Light", 15.0!)
-        Me.Label2.Location = New System.Drawing.Point(178, 122)
+        Me.Label2.ForeColor = System.Drawing.Color.White
+        Me.Label2.Location = New System.Drawing.Point(200, 125)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(162, 31)
         Me.Label2.TabIndex = 2
-        Me.Label2.Text = "MILESTONE 1"
+        Me.Label2.Text = "CLOSED BETA"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopRight
-        Me.Label2.Visible = False
-        '
-        'Label1
-        '
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI Light", 48.0!)
-        Me.Label1.Location = New System.Drawing.Point(163, 50)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(225, 92)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Music"
-        Me.Label1.Visible = False
         '
         'PictureBox1
         '
+        Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.PictureBox1.Image = Global.Maega_Music.My.Resources.Resources.logo_light
         Me.PictureBox1.Location = New System.Drawing.Point(4, 4)
         Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(460, 184)
+        Me.PictureBox1.Size = New System.Drawing.Size(399, 184)
         Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
-        Me.PictureBox1.Visible = False
         '
         'ttpPrototype
         '
@@ -274,15 +254,35 @@ Partial Class Form1
         '
         'cxtTray
         '
-        Me.cxtTray.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cxtShowHide})
+        Me.cxtTray.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.cxtShowHide, Me.PreferencesToolStripMenuItem, Me.ExitMaegaMusicToolStripMenuItem})
         Me.cxtTray.Name = "cxtTray"
-        Me.cxtTray.Size = New System.Drawing.Size(134, 26)
+        Me.cxtTray.Size = New System.Drawing.Size(167, 70)
         '
         'cxtShowHide
         '
         Me.cxtShowHide.Name = "cxtShowHide"
-        Me.cxtShowHide.Size = New System.Drawing.Size(133, 22)
+        Me.cxtShowHide.Size = New System.Drawing.Size(166, 22)
         Me.cxtShowHide.Text = "Show/Hide"
+        '
+        'PreferencesToolStripMenuItem
+        '
+        Me.PreferencesToolStripMenuItem.Name = "PreferencesToolStripMenuItem"
+        Me.PreferencesToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.PreferencesToolStripMenuItem.Text = "Preferences"
+        '
+        'ExitMaegaMusicToolStripMenuItem
+        '
+        Me.ExitMaegaMusicToolStripMenuItem.Name = "ExitMaegaMusicToolStripMenuItem"
+        Me.ExitMaegaMusicToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
+        Me.ExitMaegaMusicToolStripMenuItem.Text = "Exit Maega Music"
+        '
+        'tmrLoadGone
+        '
+        Me.tmrLoadGone.Interval = 50
+        '
+        'tmrBypassMsg
+        '
+        Me.tmrBypassMsg.Interval = 500
         '
         'Form1
         '
@@ -291,11 +291,11 @@ Partial Class Form1
         Me.BackColor = System.Drawing.Color.Fuchsia
         Me.ClientSize = New System.Drawing.Size(1300, 700)
         Me.Controls.Add(Me.pnlLogo)
-        Me.Controls.Add(Me.lblLoading)
         Me.Controls.Add(Me.DragPaneDark)
         Me.Controls.Add(Me.DragPane)
         Me.Controls.Add(Me.WebControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Form1"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Form1"
@@ -313,20 +313,21 @@ Partial Class Form1
     Friend WithEvents Button1 As Button
     Friend WithEvents DragPane As Panel
     Friend WithEvents DragPaneDark As Panel
-    Friend WithEvents lblLoading As Label
     Friend WithEvents tmrLoading As Timer
-    Friend WithEvents tmrLoadGone As Timer
     Friend WithEvents pnlLogo As Panel
     Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents ttpPrototype As ToolTip
     Friend WithEvents btnxsmall As Button
     Friend WithEvents btnMinimise As Button
-    Friend WithEvents btnHelp As Button
     Friend WithEvents btnCompact As Button
     Friend WithEvents btnDebug As Button
     Friend WithEvents ntfTray As NotifyIcon
     Friend WithEvents cxtTray As ContextMenuStrip
     Friend WithEvents cxtShowHide As ToolStripMenuItem
+    Friend WithEvents tmrLoadGone As Timer
+    Friend WithEvents tmrBypassMsg As Timer
+    Friend WithEvents btnSettings As Button
+    Friend WithEvents PreferencesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ExitMaegaMusicToolStripMenuItem As ToolStripMenuItem
 End Class

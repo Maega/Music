@@ -1,8 +1,47 @@
-﻿Public Class Form1
+﻿Imports System.IO
+Imports System.Net
+
+Public Class Form1
     'Declarations
     Dim drag As Boolean
     Dim mousex As Integer
     Dim mousey As Integer
+    Dim bordercolour As Pen = Pens.White
+    Dim dbgstatus As Boolean = False
+    Public localver As Decimal = 1.03
+
+#Region "Mouse Click"
+    Public Declare Auto Function SetCursorPos Lib "User32.dll" (ByVal X As Integer, ByVal Y As Integer) As Long
+    Public Declare Auto Function GetCursorPos Lib "User32.dll" (ByRef lpPoint As Point) As Long
+    Public Declare Sub mouse_event Lib "user32" Alias "mouse_event" (ByVal dwFlags As Long, ByVal dx As Long, ByVal dy As Long, ByVal cButtons As Long, ByVal dwExtraInfo As Long)
+    Public Const MOUSEEVENTF_LEFTDOWN = &H2
+    Public Const MOUSEEVENTF_LEFTUP = &H4
+
+    Sub BypassMsg()
+        Try
+            Dim xl As Integer = Screen.PrimaryScreen.WorkingArea.Width - 10
+            Dim yl As Integer = Screen.PrimaryScreen.WorkingArea.Height - 95
+            SetCursorPos(xl, yl)
+            Dim tempPos As Point
+            Dim R As Long = GetCursorPos(tempPos)
+            mouse_event(MOUSEEVENTF_LEFTDOWN, 0, 0, 0, 0)
+            mouse_event(MOUSEEVENTF_LEFTUP, 0, 0, 0, 0)
+        Catch ex As Exception
+            'I should probably make something happen here...
+        End Try
+    End Sub
+
+    Private Sub Form1_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+        'UNCOMMENT THE FOLLOWING LINE AFTER TESTING AND BEFORE DEPLOYING TO PRODUCTION
+        tmrBypassMsg.Start()
+    End Sub
+
+    Private Sub tmrBypassMsg_Tick(sender As Object, e As EventArgs) Handles tmrBypassMsg.Tick
+        tmrBypassMsg.Stop()
+        BypassMsg()
+    End Sub
+#End Region
+
 
 #Region "Resize"
 
@@ -188,10 +227,13 @@
 
     Protected Overrides Sub OnPaintBackground(ByVal e As PaintEventArgs)
         MyBase.OnPaintBackground(e)
-
         Dim rect As New Rectangle(0, 0, Me.ClientSize.Width - 1, Me.ClientSize.Height - 1)
-
-        e.Graphics.DrawRectangle(Pens.White, rect)
+        If My.Settings.bordercolour = "white" Then bordercolour = Pens.White
+        If My.Settings.bordercolour = "blue" Then bordercolour = Pens.RoyalBlue
+        If My.Settings.bordercolour = "red" Then bordercolour = Pens.Red
+        If My.Settings.bordercolour = "green" Then bordercolour = Pens.Green
+        If My.Settings.bordercolour = "yellow" Then bordercolour = Pens.Yellow
+        e.Graphics.DrawRectangle(bordercolour, rect)
     End Sub
 
     Private Sub Form1_MouseDown(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DragPane.MouseDown, DragPaneDark.MouseDown
@@ -220,8 +262,8 @@
             Me.Width = My.Settings.savedwidth
             CenterForm()
             Invalidate()
-            btnHelp.Show()
-            btnDebug.Show()
+            btnSettings.Show()
+            If dbgstatus = True Then btnDebug.Show()
             btnCompact.Show()
             btnxsmall.Show()
             Me.TopMost = False
@@ -230,9 +272,12 @@
             Button1.Text = "X"
             WebView1.LoadUrl("http://music.maeganetwork.com")
         Else
-            If My.Settings.savedwidth <= 500 Then My.Settings.savedwidth = 1300
-            My.Settings.Save()
-            Application.Exit()
+            Dim result As Integer = MessageBox.Show("Are you sure you would like to quit Maega Music?", "Maega Music", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+                If My.Settings.savedwidth <= 500 Then My.Settings.savedwidth = 1300
+                My.Settings.Save()
+                Application.Exit()
+            End If
         End If
     End Sub
 
@@ -240,49 +285,36 @@
         If My.Settings.dosequential = True Then
             tmrLoading.Enabled = False
             pnlLogo.Visible = False
-            lblLoading.Visible = False
-        End If
-        If Not lblLoading.Top <= 0 Then
-            lblLoading.Top = lblLoading.Top - 2
-        End If
-        If Not lblLoading.Left <= 0 Then
-            lblLoading.Left = lblLoading.Left - 2.6
-        Else
-            lblLoading.BackColor = Color.FromArgb(37, 37, 40)
-            lblLoading.ForeColor = Color.White
-            lblLoading.Width = 222
-            lblLoading.Height = 21
-            lblLoading.Font = New Font("Segoe UI Light", 12) 'FontStyle.Bold)
-        End If
-        If Not lblLoading.Font.Size <= 12 Then
-            lblLoading.Font = New Font("Segoe UI Light", lblLoading.Font.Size - 0.2) 'FontStyle.Bold)
         End If
         If Not pnlLogo.Top <= 260 Then
             pnlLogo.Top = pnlLogo.Top - 2
+        Else
+            tmrLoading.Stop()
+            tmrLoadGone.Start()
         End If
-        'lblLoading.Width = lblLoading.Width - 1
-        'lblLoading.Height = lblLoading.Height - 1
-
-        'lblLoading.Visible = False
-    End Sub
-
-    Private Sub tmrLoadGone_Tick(sender As Object, e As EventArgs) Handles tmrLoadGone.Tick
-        lblLoading.Visible = False
-        pnlLogo.Visible = False
-    End Sub
-
-    Private Sub btnHelp_Click(sender As Object, e As EventArgs) Handles btnHelp.Click
-        My.Settings.adminenabled = True
-        MsgBox("The admin link has been enabled, however it will only function for correctly authenticated users.", MsgBoxStyle.Exclamation)
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        WebView1.LoadUrl("file:///" + System.IO.Directory.GetCurrentDirectory + "/appload.htm")
         Me.Height = My.Settings.savedheight
         Me.Width = My.Settings.savedwidth
-        If My.Settings.userbeta = True Then
-            btnDebug.Hide()
-        End If
+        If dbgstatus = False Then btnDebug.Hide()
         CenterForm()
+        Dim address As String = "http://update.maeganetwork.com/music/betaver.txt"
+        Dim client As WebClient = New WebClient()
+        Dim reader As StreamReader = New StreamReader(client.OpenRead(address))
+        Dim downver As Decimal = CDec(reader.ReadToEnd)
+        If downver > localver Then
+            Dim result As Integer = MessageBox.Show("An update is available for Maega Music, update now?", "Perform Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+                Try
+                    Process.Start(Directory.GetCurrentDirectory + "\MaegaUpdate.exe")
+                    Application.Exit()
+                Catch ex As Exception
+                    MsgBox("The Maega Update tool appears to be missing, please reinstall Maega Music.", MsgBoxStyle.Critical, "Update Aborted")
+                End Try
+            End If
+        End If
     End Sub
 
     Private Sub WebControl1_MouseEnter(sender As Object, e As EventArgs) Handles WebControl1.MouseEnter, DragPane.MouseEnter, DragPaneDark.MouseEnter, Me.MouseEnter, WebView1.MouseEnter
@@ -290,48 +322,50 @@
     End Sub
 
     Private Sub WebControl1_MouseLeave(sender As Object, e As EventArgs) Handles WebControl1.MouseLeave, DragPane.MouseLeave, DragPaneDark.MouseLeave, Me.MouseLeave, WebView1.MouseEnter
-        If Button1.Text = ">" Then Me.Opacity = 0.5
+        If Button1.Text = ">" Then Me.Opacity = My.Settings.miniopacity
     End Sub
 
 #Region "Button Enter and Leave Events"
     Private Sub Button1_MouseEnter(sender As Object, e As EventArgs) Handles Button1.MouseEnter
         Button1.BackColor = Color.Red
+        Button1.ForeColor = Color.White
         If Button1.Text = ">" Then Me.Opacity = 1
     End Sub
     Private Sub Button1_MouseLeave(sender As Object, e As EventArgs) Handles Button1.MouseLeave
-        Button1.BackColor = Color.FromArgb(37, 37, 40)
-        If Button1.Text = ">" Then Me.Opacity = 0.5
+        Button1.BackColor = Color.FromArgb(243, 243, 244)
+        Button1.ForeColor = Color.FromArgb(51, 51, 51)
+        If Button1.Text = ">" Then Me.Opacity = My.Settings.miniopacity
     End Sub
 
-    Private Sub btnxsmall_MouseEnter(sender As Object, e As EventArgs) Handles btnxsmall.MouseEnter
-        btnxsmall.BackColor = Color.SteelBlue
+    Private Sub SteelBlue_MouseEnter(sender As Object, e As EventArgs) Handles btnxsmall.MouseEnter
+        btnxsmall.BackColor = Color.FromArgb(153, 128, 255)
     End Sub
 
     Private Sub btnxsmall_MouseLeave(sender As Object, e As EventArgs) Handles btnxsmall.MouseLeave
-        btnxsmall.BackColor = Color.FromArgb(37, 37, 40)
+        btnxsmall.BackColor = Color.FromArgb(243, 243, 244)
     End Sub
 
     Private Sub btnCompact_MouseEnter(sender As Object, e As EventArgs) Handles btnCompact.MouseEnter
-        btnCompact.BackColor = Color.SteelBlue
+        btnCompact.BackColor = Color.FromArgb(153, 128, 255)
     End Sub
 
     Private Sub btnCompact_MouseLeave(sender As Object, e As EventArgs) Handles btnCompact.MouseLeave
-        btnCompact.BackColor = Color.FromArgb(37, 37, 40)
+        btnCompact.BackColor = Color.FromArgb(243, 243, 244)
     End Sub
-    Private Sub btnHelp_MouseEnter(sender As Object, e As EventArgs) Handles btnHelp.MouseEnter
-        btnHelp.BackColor = Color.SteelBlue
+    Private Sub btnHelp_MouseEnter(sender As Object, e As EventArgs) Handles btnSettings.MouseEnter
+        btnSettings.BackColor = Color.FromArgb(153, 128, 255)
     End Sub
 
-    Private Sub btnHelp_MouseLeave(sender As Object, e As EventArgs) Handles btnHelp.MouseLeave
-        btnHelp.BackColor = Color.FromArgb(37, 37, 40)
+    Private Sub btnHelp_MouseLeave(sender As Object, e As EventArgs) Handles btnSettings.MouseLeave
+        btnSettings.BackColor = Color.FromArgb(243, 243, 244)
     End Sub
 
     Private Sub btnMinimise_MouseEnter(sender As Object, e As EventArgs) Handles btnMinimise.MouseEnter
-        btnMinimise.BackColor = Color.SteelBlue
+        btnMinimise.BackColor = Color.FromArgb(153, 128, 255)
     End Sub
 
     Private Sub btnMinimise_MouseLeave(sender As Object, e As EventArgs) Handles btnMinimise.MouseLeave
-        btnMinimise.BackColor = Color.FromArgb(37, 37, 40)
+        btnMinimise.BackColor = Color.FromArgb(243, 243, 244)
     End Sub
 
     Private Sub btnDebug_MouseEnter(sender As Object, e As EventArgs) Handles btnDebug.MouseEnter
@@ -339,7 +373,7 @@
     End Sub
 
     Private Sub btnDebug_MouseLeave(sender As Object, e As EventArgs) Handles btnDebug.MouseLeave
-        btnDebug.BackColor = Color.FromArgb(37, 37, 40)
+        btnDebug.BackColor = Color.FromArgb(243, 243, 244)
     End Sub
 #End Region
 
@@ -350,12 +384,12 @@
         Me.Width = 280
         Me.Height = 73
         Invalidate()
-        btnHelp.Hide()
+        btnSettings.Hide()
         btnDebug.Hide()
         btnCompact.Hide()
         btnxsmall.Hide()
         Me.TopMost = True
-        Me.Opacity = 0.5
+        Me.Opacity = My.Settings.miniopacity
         Dim xloc As Integer = Screen.PrimaryScreen.WorkingArea.Width - 300
         Dim yloc As Integer = Screen.PrimaryScreen.WorkingArea.Height - 80
         Me.Location = New Point(xloc, yloc)
@@ -366,23 +400,25 @@
 
     Private Sub btnCompact_Click(sender As Object, e As EventArgs) Handles btnCompact.Click
         DragPane.Focus()
-        If minimumWidth = 430 Then
+        If minimumWidth = 425 Then
             minimumWidth = 900
             Me.Width = My.Settings.savedwidth
             Me.Height = My.Settings.savedheight
             ttpPrototype.SetToolTip(Me.btnCompact, "Enter Compact Mode")
             btnCompact.Text = "<"
-            btnDebug.Show()
+            If dbgstatus = True Then btnDebug.Show()
             CenterForm()
+            Me.Opacity = 1
             Invalidate()
             WebView1.LoadUrl("http://music.maeganetwork.com")
         Else
-            minimumWidth = 430
+            minimumWidth = 425
             Me.Width = 430
             ttpPrototype.SetToolTip(Me.btnCompact, "Exit Compact Mode")
             btnCompact.Text = ">"
             btnDebug.Hide()
             CenterForm()
+            Me.Opacity = My.Settings.compactopacity
             Invalidate()
             WebView1.LoadUrl("http://music.maeganetwork.com")
         End If
@@ -394,15 +430,74 @@
     End Sub
 
     Private Sub btnMinimise_Click(sender As Object, e As EventArgs) Handles btnMinimise.Click
+        DragPane.Focus()
         Me.Hide()
         ntfTray.ShowBalloonTip(500)
     End Sub
 
     Private Sub cxtShowHide_Click(sender As Object, e As EventArgs) Handles cxtShowHide.Click
+        ShowHide()
+    End Sub
+
+    Sub ShowHide()
         If Me.Visible = False Then
             Me.Show()
         Else
             Me.Hide()
         End If
     End Sub
+
+    Private Sub tmrLoadGone_Tick(sender As Object, e As EventArgs) Handles tmrLoadGone.Tick
+        If WebView1.Url = "http://music.maeganetwork.com/" Or WebView1.Url = "http://music.maeganetwork.com/#/" Or WebView1.Url = "http://music.maeganetwork.com/#/new-releases/" Then
+            tmrLoadGone.Stop()
+            pnlLogo.Visible = False
+        End If
+    End Sub
+
+    Private Sub btnSettings_Click(sender As Object, e As EventArgs) Handles btnSettings.Click
+        DragPane.Focus()
+        frmSettings.Show()
+    End Sub
+
+    Private Sub ntfTray_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles ntfTray.MouseDoubleClick
+        ShowHide()
+    End Sub
+
+    Private Sub WebURLChanged(sender As Object, e As EventArgs) Handles WebView1.UrlChanged
+        If Not WebView1.Url.Contains("maeganetwork") And Not WebView1.Url.Contains("appload") Then
+            WebView1.Url = "http://music.maeganetwork.com/"
+        End If
+    End Sub
+
+    'Private Sub WebURLLoaded(sender As Object, e As EventArgs) Handles WebView1.LoadCompleted
+    'If WebView1.Url.Contains("appload") Then
+    'WebView1.LoadUrlAndWait("http://music.maeganetwork.com")
+    'End If
+    'End Sub
+
+    Private Sub WebNewWindow(sender As Object, e As EO.WebBrowser.NewWindowEventArgs) Handles WebView1.NewWindow
+        Dim result As Integer = MessageBox.Show("This will open a share link in your default browser, would you like to continue?", "Open External Link", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If result = DialogResult.Yes Then
+            Process.Start(e.TargetUrl)
+        End If
+    End Sub
+
+    Private Sub PreferencesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles PreferencesToolStripMenuItem.Click
+        frmSettings.Show()
+    End Sub
+
+    Private Sub ExitMaegaMusicToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitMaegaMusicToolStripMenuItem.Click
+        Dim result As Integer = MessageBox.Show("Are you sure you would like to quit Maega Music?", "Maega Music", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If result = DialogResult.Yes Then
+            Application.Exit()
+        End If
+    End Sub
+
+    Private Sub DragPane_Paint(sender As Object, e As PaintEventArgs) Handles DragPane.Paint
+
+    End Sub
+
+    'Private Sub WebLoadFailed(sender As Object, e As EventArgs) Handles WebView1.LoadFailed
+    '   WebView1.LoadUrl("http://music.maeganetwork.com/")
+    'End Sub
 End Class
