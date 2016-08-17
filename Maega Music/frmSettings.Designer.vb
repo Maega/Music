@@ -74,7 +74,7 @@ Partial Class frmSettings
         Dim Bloom50 As Maega_Music.Bloom = New Maega_Music.Bloom()
         Me.GenuineTheme1 = New Maega_Music.GenuineTheme()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.chkAlwaysSafe = New System.Windows.Forms.CheckBox()
         Me.btnResetAll = New Maega_Music.GenuineButton()
         Me.GenuineButton1 = New Maega_Music.GenuineButton()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -149,7 +149,7 @@ Partial Class frmSettings
         '
         'GroupBox3
         '
-        Me.GroupBox3.Controls.Add(Me.Label2)
+        Me.GroupBox3.Controls.Add(Me.chkAlwaysSafe)
         Me.GroupBox3.ForeColor = System.Drawing.Color.White
         Me.GroupBox3.Location = New System.Drawing.Point(399, 194)
         Me.GroupBox3.Name = "GroupBox3"
@@ -158,14 +158,15 @@ Partial Class frmSettings
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Advanced Options"
         '
-        'Label2
+        'chkAlwaysSafe
         '
-        Me.Label2.Location = New System.Drawing.Point(6, 24)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(370, 17)
-        Me.Label2.TabIndex = 0
-        Me.Label2.Text = "Under Development"
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.chkAlwaysSafe.AutoSize = True
+        Me.chkAlwaysSafe.Location = New System.Drawing.Point(59, 26)
+        Me.chkAlwaysSafe.Name = "chkAlwaysSafe"
+        Me.chkAlwaysSafe.Size = New System.Drawing.Size(269, 17)
+        Me.chkAlwaysSafe.TabIndex = 0
+        Me.chkAlwaysSafe.Text = "Use Experimental Mode (Requires Restart)"
+        Me.chkAlwaysSafe.UseVisualStyleBackColor = True
         '
         'btnResetAll
         '
@@ -510,6 +511,7 @@ Partial Class frmSettings
         Me.TransparencyKey = System.Drawing.Color.Fuchsia
         Me.GenuineTheme1.ResumeLayout(False)
         Me.GroupBox3.ResumeLayout(False)
+        Me.GroupBox3.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
@@ -543,5 +545,5 @@ Partial Class frmSettings
     Friend WithEvents GenuineButton1 As GenuineButton
     Friend WithEvents btnResetAll As GenuineButton
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents Label2 As Label
+    Friend WithEvents chkAlwaysSafe As CheckBox
 End Class

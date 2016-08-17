@@ -80,7 +80,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
         Public Property userbeta() As Boolean
             Get
                 Return CType(Me("userbeta"),Boolean)
@@ -92,7 +92,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("1300")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("1420")>  _
         Public Property savedwidth() As Integer
             Get
                 Return CType(Me("savedwidth"),Integer)
@@ -104,7 +104,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("700")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("770")>  _
         Public Property savedheight() As Integer
             Get
                 Return CType(Me("savedheight"),Integer)
@@ -159,6 +159,54 @@ Namespace My
             End Get
             Set
                 Me("mainopacity") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property safeclose() As Boolean
+            Get
+                Return CType(Me("safeclose"),Boolean)
+            End Get
+            Set
+                Me("safeclose") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property useexperimental() As Boolean
+            Get
+                Return CType(Me("useexperimental"),Boolean)
+            End Get
+            Set
+                Me("useexperimental") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("z2cisuoza1ncmpcpvh0a")>  _
+        Public Property htmlkey() As String
+            Get
+                Return CType(Me("htmlkey"),String)
+            End Get
+            Set
+                Me("htmlkey") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("ezf9a7s3eb54xbynjazs")>  _
+        Public Property pha2key() As String
+            Get
+                Return CType(Me("pha2key"),String)
+            End Get
+            Set
+                Me("pha2key") = value
             End Set
         End Property
     End Class

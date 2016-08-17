@@ -8,7 +8,7 @@ Public Class Form1
     Dim mousey As Integer
     Dim bordercolour As Pen = Pens.White
     Dim dbgstatus As Boolean = False
-    Public localver As Decimal = 1.03
+    Public localver As Decimal = 1.1
 
 #Region "Mouse Click"
     Public Declare Auto Function SetCursorPos Lib "User32.dll" (ByVal X As Integer, ByVal Y As Integer) As Long
@@ -275,6 +275,7 @@ Public Class Form1
             Dim result As Integer = MessageBox.Show("Are you sure you would like to quit Maega Music?", "Maega Music", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If result = DialogResult.Yes Then
                 If My.Settings.savedwidth <= 500 Then My.Settings.savedwidth = 1300
+                My.Settings.safeclose = True
                 My.Settings.Save()
                 Application.Exit()
             End If
@@ -295,26 +296,47 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If My.Settings.useexperimental = False Then
+            CompatMode.Show()
+            Me.Close()
+            Exit Sub
+        End If
+        If My.Settings.safeclose = False Then
+            Dim result As Integer = MessageBox.Show("It looks like Maega Music didn't close properly last session." + vbNewLine + "Would you like to leave experimental mode? ", "Maega Music", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
+            If result = DialogResult.Yes Then
+                My.Settings.useexperimental = False
+                My.Settings.Save()
+                CompatMode.Show()
+                Me.Close()
+                Exit Sub
+            End If
+        End If
+        My.Settings.safeclose = False
+        My.Settings.Save()
         WebView1.LoadUrl("file:///" + System.IO.Directory.GetCurrentDirectory + "/appload.htm")
         Me.Height = My.Settings.savedheight
         Me.Width = My.Settings.savedwidth
         If dbgstatus = False Then btnDebug.Hide()
         CenterForm()
-        Dim address As String = "http://update.maeganetwork.com/music/betaver.txt"
-        Dim client As WebClient = New WebClient()
-        Dim reader As StreamReader = New StreamReader(client.OpenRead(address))
-        Dim downver As Decimal = CDec(reader.ReadToEnd)
-        If downver > localver Then
-            Dim result As Integer = MessageBox.Show("An update is available for Maega Music, update now?", "Perform Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If result = DialogResult.Yes Then
-                Try
-                    Process.Start(Directory.GetCurrentDirectory + "\MaegaUpdate.exe")
-                    Application.Exit()
-                Catch ex As Exception
-                    MsgBox("The Maega Update tool appears to be missing, please reinstall Maega Music.", MsgBoxStyle.Critical, "Update Aborted")
-                End Try
+        Try
+            Dim address As String = "http://update.maeganetwork.com/music/betaver.txt"
+            Dim client As WebClient = New WebClient()
+            Dim reader As StreamReader = New StreamReader(client.OpenRead(address))
+            Dim downver As Decimal = CDec(reader.ReadToEnd)
+            If downver > localver Then
+                Dim result As Integer = MessageBox.Show("An update is available for Maega Music, update now?", "Perform Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                If result = DialogResult.Yes Then
+                    Try
+                        Process.Start(Directory.GetCurrentDirectory + "\MaegaUpdate.exe")
+                        Application.Exit()
+                    Catch ex As Exception
+                        MsgBox("The Maega Update tool appears to be missing, please reinstall Maega Music.", MsgBoxStyle.Critical, "Update Aborted")
+                    End Try
+                End If
             End If
-        End If
+        Catch exo As Exception
+            MsgBox("Checking for updates has failed. The servers may be experiencing issues or Maega Music might need a manual update." + vbNewLine + vbNewLine + "Please try again later. If the problem persists, check https://music.maeganetwork.com/windows for more information.", MsgBoxStyle.Critical)
+        End Try
     End Sub
 
     Private Sub WebControl1_MouseEnter(sender As Object, e As EventArgs) Handles WebControl1.MouseEnter, DragPane.MouseEnter, DragPaneDark.MouseEnter, Me.MouseEnter, WebView1.MouseEnter
@@ -440,10 +462,18 @@ Public Class Form1
     End Sub
 
     Sub ShowHide()
-        If Me.Visible = False Then
-            Me.Show()
+        If My.Settings.useexperimental = True Then
+            If Me.Visible = False Then
+                Me.Show()
+            Else
+                Me.Hide()
+            End If
         Else
-            Me.Hide()
+            If CompatMode.Visible = False Then
+                CompatMode.Show()
+            Else
+                CompatMode.Hide()
+            End If
         End If
     End Sub
 
@@ -460,7 +490,17 @@ Public Class Form1
     End Sub
 
     Private Sub ntfTray_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles ntfTray.MouseDoubleClick
-        ShowHide()
+        'ShowHide()
+        If CompactMode.displayed = True Then
+            CompactMode.tmrAnimation.Start()
+        ElseIf CompactMode.displayed = False And CompatMode.Visible = False Then
+            CompatMode.gocompact = True
+            CompactMode.Location = New Point(Screen.PrimaryScreen.WorkingArea.Width - 535, Screen.PrimaryScreen.WorkingArea.Height - -100)
+            CompactMode.Show()
+            CompactMode.tmrAnimation.Start()
+        Else
+            CompatMode.Hide()
+        End If
     End Sub
 
     Private Sub WebURLChanged(sender As Object, e As EventArgs) Handles WebView1.UrlChanged
@@ -487,14 +527,21 @@ Public Class Form1
     End Sub
 
     Private Sub ExitMaegaMusicToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitMaegaMusicToolStripMenuItem.Click
-        Dim result As Integer = MessageBox.Show("Are you sure you would like to quit Maega Music?", "Maega Music", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If result = DialogResult.Yes Then
-            Application.Exit()
-        End If
+        ExitMusic()
     End Sub
 
-    Private Sub DragPane_Paint(sender As Object, e As PaintEventArgs) Handles DragPane.Paint
-
+    Sub ExitMusic()
+        Dim result As Integer = MessageBox.Show("Are you sure you would like to quit Maega Music?", "Maega Music", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If result = DialogResult.Yes Then
+            If My.Settings.savedwidth <= 500 Then My.Settings.savedwidth = 1300
+            My.Settings.safeclose = True
+            My.Settings.Save()
+            CompactMode.Close()
+            CompatMode.Close()
+            Me.Close()
+            'Application.Exit() ''Figure out why the hell this isn't working
+            End
+        End If
     End Sub
 
     'Private Sub WebLoadFailed(sender As Object, e As EventArgs) Handles WebView1.LoadFailed

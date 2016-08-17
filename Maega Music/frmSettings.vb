@@ -33,6 +33,13 @@
     End Sub
 
     Private Sub frmSettings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If My.Settings.useexperimental = False Then
+            'GroupBox1.Enabled = False
+            'GroupBox1.Text = "Transparency Settings - Only takes effect in Experimental Mode"
+            'GroupBox2.Enabled = False
+            GroupBox2.Text = "Border Colour - Only takes effect in Experimental Mode"
+        End If
+
         CenterForm()
         miniopacityL = My.Settings.miniopacity.ToString
         lblMiniOpacity.Text = CStr(miniopacityL * 100) + "%"
@@ -60,6 +67,8 @@
         If My.Settings.bordercolour = "red" Then radRed.Checked = True
         If My.Settings.bordercolour = "green" Then radGreen.Checked = True
         If My.Settings.bordercolour = "yellow" Then radYellow.Checked = True
+
+        If My.Settings.useexperimental = True Then chkAlwaysSafe.Checked = True
     End Sub
 
     Private Sub btnMiniPlayerOpacityDefault_Click(sender As Object, e As EventArgs) Handles btnMiniPlayerOpacityDefault.Click
@@ -113,6 +122,7 @@
         lblMainOpacity.Text = "Normal Opacity: " + CStr(mainopacityL * 100) + "%"
         My.Settings.Save()
         If Form1.Width >= 700 Then Form1.Opacity = My.Settings.mainopacity
+        CompatMode.Opacity = My.Settings.mainopacity
     End Sub
 
     Private Sub btnMainOpacityDefault_Click(sender As Object, e As EventArgs) Handles btnMainOpacityDefault.Click
@@ -121,7 +131,7 @@
     End Sub
 
     Private Sub GenuineButton1_Click_1(sender As Object, e As EventArgs) Handles GenuineButton1.Click
-        MsgBox("Maega Music" + vbNewLine + "Maega Music Client for Microsoft Windows" + vbNewLine + "Version: 1.0 - Closed Beta Revision " + Form1.localver.ToString + vbNewLine + "Release Channel: Beta" + vbNewLine + vbNewLine + "This beta release is not intended for production use. It's designed for developer testing and bleeding edge users interested in trying out pre-release software. This software may change significantly before release and updates may be discontinued for this release channel without notification." + vbNewLine + vbNewLine + "Known Issues:" + vbNewLine + "Resizing the form too small will cause the resize handles to disappear." + vbNewLine + "Sometimes the form will continue to resize after releasing the mouse." + vbNewLine + "Switching between players causes the currently playing track to stop." + vbNewLine + "On rare occasions, the application may completely hang on startup.", MsgBoxStyle.Information, "About Maega Music")
+        MsgBox("Maega Music" + vbNewLine + "Maega Music Client for Microsoft Windows" + vbNewLine + "Version: 1.1 - Open Beta Revision " + Form1.localver.ToString + vbNewLine + "Release Channel: Beta" + vbNewLine + vbNewLine + "This beta release is designed for consumer testing and bleeding edge users interested in trying out pre-release software. The software may change significantly before release and updates may be discontinued for this release channel without notification." + vbNewLine + vbNewLine + "Known Issues:" + vbNewLine + "Switching between players causes the currently playing track to stop." + vbNewLine + "On rare occasions, the application may completely hang on startup.", MsgBoxStyle.Information, "About Maega Music")
     End Sub
 
     Private Sub GenuineButton2_Click(sender As Object, e As EventArgs) Handles btnResetAll.Click
@@ -131,5 +141,19 @@
             My.Settings.Save()
             Application.Restart()
         End If
+    End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles chkAlwaysSafe.CheckedChanged
+        If chkAlwaysSafe.Checked = True Then
+            My.Settings.useexperimental = True
+            My.Settings.safeclose = True
+        Else
+            My.Settings.useexperimental = False
+        End If
+        My.Settings.Save()
+    End Sub
+
+    Private Sub GenuineTheme1_Click(sender As Object, e As EventArgs)
+
     End Sub
 End Class

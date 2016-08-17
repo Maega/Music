@@ -9,13 +9,13 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="userbeta" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="savedwidth" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1300</Value>
+      <Value Profile="(Default)">1420</Value>
     </Setting>
     <Setting Name="savedheight" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">700</Value>
+      <Value Profile="(Default)">770</Value>
     </Setting>
     <Setting Name="miniopacity" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">0.5</Value>
@@ -28,6 +28,18 @@
     </Setting>
     <Setting Name="mainopacity" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="safeclose" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="useexperimental" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="htmlkey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">z2cisuoza1ncmpcpvh0a</Value>
+    </Setting>
+    <Setting Name="pha2key" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ezf9a7s3eb54xbynjazs</Value>
     </Setting>
   </Settings>
 </SettingsFile>

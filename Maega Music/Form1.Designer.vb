@@ -29,15 +29,14 @@ Partial Class Form1
         Me.Button1 = New System.Windows.Forms.Button()
         Me.DragPane = New System.Windows.Forms.Panel()
         Me.DragPaneDark = New System.Windows.Forms.Panel()
-        Me.btnSettings = New System.Windows.Forms.Button()
         Me.btnDebug = New System.Windows.Forms.Button()
+        Me.btnSettings = New System.Windows.Forms.Button()
         Me.btnCompact = New System.Windows.Forms.Button()
-        Me.btnMinimise = New System.Windows.Forms.Button()
         Me.btnxsmall = New System.Windows.Forms.Button()
+        Me.btnMinimise = New System.Windows.Forms.Button()
         Me.tmrLoading = New System.Windows.Forms.Timer(Me.components)
         Me.pnlLogo = New System.Windows.Forms.Panel()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.ttpPrototype = New System.Windows.Forms.ToolTip(Me.components)
         Me.ntfTray = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.cxtTray = New System.Windows.Forms.ContextMenuStrip(Me.components)
@@ -46,10 +45,11 @@ Partial Class Form1
         Me.ExitMaegaMusicToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tmrLoadGone = New System.Windows.Forms.Timer(Me.components)
         Me.tmrBypassMsg = New System.Windows.Forms.Timer(Me.components)
+        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.DragPaneDark.SuspendLayout()
         Me.pnlLogo.SuspendLayout()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.cxtTray.SuspendLayout()
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'WebControl1
@@ -110,23 +110,6 @@ Partial Class Form1
         Me.DragPaneDark.Size = New System.Drawing.Size(1075, 25)
         Me.DragPaneDark.TabIndex = 3
         '
-        'btnSettings
-        '
-        Me.btnSettings.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSettings.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(244, Byte), Integer))
-        Me.btnSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
-        Me.btnSettings.FlatAppearance.BorderSize = 0
-        Me.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSettings.Font = New System.Drawing.Font("Segoe UI Light", 8.25!)
-        Me.btnSettings.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
-        Me.btnSettings.Location = New System.Drawing.Point(939, -2)
-        Me.btnSettings.Name = "btnSettings"
-        Me.btnSettings.Size = New System.Drawing.Size(34, 27)
-        Me.btnSettings.TabIndex = 19
-        Me.btnSettings.Text = "[ ]"
-        Me.ttpPrototype.SetToolTip(Me.btnSettings, "Enter Settings")
-        Me.btnSettings.UseVisualStyleBackColor = False
-        '
         'btnDebug
         '
         Me.btnDebug.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -143,6 +126,23 @@ Partial Class Form1
         Me.btnDebug.Text = "!"
         Me.ttpPrototype.SetToolTip(Me.btnDebug, "Enter Debug Settings")
         Me.btnDebug.UseVisualStyleBackColor = False
+        '
+        'btnSettings
+        '
+        Me.btnSettings.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSettings.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(244, Byte), Integer))
+        Me.btnSettings.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnSettings.FlatAppearance.BorderSize = 0
+        Me.btnSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSettings.Font = New System.Drawing.Font("Segoe UI Light", 8.25!)
+        Me.btnSettings.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.btnSettings.Location = New System.Drawing.Point(939, -2)
+        Me.btnSettings.Name = "btnSettings"
+        Me.btnSettings.Size = New System.Drawing.Size(34, 27)
+        Me.btnSettings.TabIndex = 19
+        Me.btnSettings.Text = "[ ]"
+        Me.ttpPrototype.SetToolTip(Me.btnSettings, "Enter Settings")
+        Me.btnSettings.UseVisualStyleBackColor = False
         '
         'btnCompact
         '
@@ -161,23 +161,6 @@ Partial Class Form1
         Me.ttpPrototype.SetToolTip(Me.btnCompact, "Enter Compact Mode")
         Me.btnCompact.UseVisualStyleBackColor = False
         '
-        'btnMinimise
-        '
-        Me.btnMinimise.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnMinimise.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(244, Byte), Integer))
-        Me.btnMinimise.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
-        Me.btnMinimise.FlatAppearance.BorderSize = 0
-        Me.btnMinimise.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnMinimise.Font = New System.Drawing.Font("Segoe UI Light", 8.25!)
-        Me.btnMinimise.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
-        Me.btnMinimise.Location = New System.Drawing.Point(905, -2)
-        Me.btnMinimise.Name = "btnMinimise"
-        Me.btnMinimise.Size = New System.Drawing.Size(34, 27)
-        Me.btnMinimise.TabIndex = 16
-        Me.btnMinimise.Text = "_"
-        Me.ttpPrototype.SetToolTip(Me.btnMinimise, "Minimise Maega Music")
-        Me.btnMinimise.UseVisualStyleBackColor = False
-        '
         'btnxsmall
         '
         Me.btnxsmall.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -194,6 +177,23 @@ Partial Class Form1
         Me.btnxsmall.Text = "<<"
         Me.ttpPrototype.SetToolTip(Me.btnxsmall, "Enter MiniPlayer Mode")
         Me.btnxsmall.UseVisualStyleBackColor = False
+        '
+        'btnMinimise
+        '
+        Me.btnMinimise.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnMinimise.BackColor = System.Drawing.Color.FromArgb(CType(CType(243, Byte), Integer), CType(CType(243, Byte), Integer), CType(CType(244, Byte), Integer))
+        Me.btnMinimise.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnMinimise.FlatAppearance.BorderSize = 0
+        Me.btnMinimise.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnMinimise.Font = New System.Drawing.Font("Segoe UI Light", 8.25!)
+        Me.btnMinimise.ForeColor = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.btnMinimise.Location = New System.Drawing.Point(905, -2)
+        Me.btnMinimise.Name = "btnMinimise"
+        Me.btnMinimise.Size = New System.Drawing.Size(34, 27)
+        Me.btnMinimise.TabIndex = 16
+        Me.btnMinimise.Text = "_"
+        Me.ttpPrototype.SetToolTip(Me.btnMinimise, "Minimise Maega Music")
+        Me.btnMinimise.UseVisualStyleBackColor = False
         '
         'tmrLoading
         '
@@ -218,19 +218,8 @@ Partial Class Form1
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(162, 31)
         Me.Label2.TabIndex = 2
-        Me.Label2.Text = "CLOSED BETA"
+        Me.Label2.Text = "OPEN BETA"
         Me.Label2.TextAlign = System.Drawing.ContentAlignment.TopRight
-        '
-        'PictureBox1
-        '
-        Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
-        Me.PictureBox1.Image = Global.Maega_Music.My.Resources.Resources.logo_light
-        Me.PictureBox1.Location = New System.Drawing.Point(4, 4)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(399, 184)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
-        Me.PictureBox1.TabIndex = 0
-        Me.PictureBox1.TabStop = False
         '
         'ttpPrototype
         '
@@ -284,6 +273,17 @@ Partial Class Form1
         '
         Me.tmrBypassMsg.Interval = 500
         '
+        'PictureBox1
+        '
+        Me.PictureBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(37, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.PictureBox1.Image = Global.Maega_Music.My.Resources.Resources.logo_light
+        Me.PictureBox1.Location = New System.Drawing.Point(4, 4)
+        Me.PictureBox1.Name = "PictureBox1"
+        Me.PictureBox1.Size = New System.Drawing.Size(399, 184)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+        Me.PictureBox1.TabIndex = 0
+        Me.PictureBox1.TabStop = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -302,8 +302,8 @@ Partial Class Form1
         Me.TransparencyKey = System.Drawing.Color.Fuchsia
         Me.DragPaneDark.ResumeLayout(False)
         Me.pnlLogo.ResumeLayout(False)
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.cxtTray.ResumeLayout(False)
+        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
