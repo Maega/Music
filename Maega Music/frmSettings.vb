@@ -24,7 +24,7 @@
         miniopacityL = My.Settings.miniopacity.ToString
         lblMiniOpacity.Text = "MiniPlayer Opacity: " + CStr(miniopacityL * 100) + "%"
         My.Settings.Save()
-        If Form1.Button1.Text = ">" Then Form1.Opacity = My.Settings.miniopacity
+        'If Form1.Button1.Text = ">" Then Form1.Opacity = My.Settings.miniopacity
     End Sub
 
     Private Sub CenterForm()
@@ -92,7 +92,7 @@
         compactopacityL = My.Settings.compactopacity.ToString
         lblCompactOpacity.Text = "Compact Mode Opacity: " + CStr(compactopacityL * 100) + "%"
         My.Settings.Save()
-        If Form1.btnCompact.Text = ">" Then Form1.Opacity = My.Settings.compactopacity
+        'If Form1.btnCompact.Text = ">" Then Form1.Opacity = My.Settings.compactopacity
     End Sub
 
     Private Sub Bordercolour_CheckedChanged(sender As Object, e As EventArgs) Handles radWhite.CheckedChanged, radBlue.CheckedChanged, radGreen.CheckedChanged, radRed.CheckedChanged, radYellow.CheckedChanged
@@ -101,7 +101,7 @@
         If radRed.Checked = True Then My.Settings.bordercolour = "red"
         If radGreen.Checked = True Then My.Settings.bordercolour = "green"
         If radYellow.Checked = True Then My.Settings.bordercolour = "yellow"
-        Form1.Invalidate()
+        CompatMode.Invalidate()
     End Sub
 
     Private Sub btnCompactOpacityDefault_Click(sender As Object, e As EventArgs) Handles btnCompactOpacityDefault.Click
@@ -121,7 +121,7 @@
         mainopacityL = My.Settings.mainopacity.ToString
         lblMainOpacity.Text = "Normal Opacity: " + CStr(mainopacityL * 100) + "%"
         My.Settings.Save()
-        If Form1.Width >= 700 Then Form1.Opacity = My.Settings.mainopacity
+        'If Form1.Width >= 700 Then Form1.Opacity = My.Settings.mainopacity
         CompatMode.Opacity = My.Settings.mainopacity
     End Sub
 
@@ -131,7 +131,7 @@
     End Sub
 
     Private Sub GenuineButton1_Click_1(sender As Object, e As EventArgs) Handles GenuineButton1.Click
-        MsgBox("Maega Music" + vbNewLine + "Maega Music Client for Microsoft Windows" + vbNewLine + "Version: 1.1 - Open Beta Revision " + Form1.localver.ToString + vbNewLine + "Release Channel: Beta" + vbNewLine + vbNewLine + "This beta release is designed for consumer testing and bleeding edge users interested in trying out pre-release software. The software may change significantly before release and updates may be discontinued for this release channel without notification." + vbNewLine + vbNewLine + "Known Issues:" + vbNewLine + "Switching between players causes the currently playing track to stop." + vbNewLine + "On rare occasions, the application may completely hang on startup.", MsgBoxStyle.Information, "About Maega Music")
+        MsgBox("Maega Music" + vbNewLine + "Maega Music Client for Microsoft Windows" + vbNewLine + "Version: 1.1 - Open Beta Revision " + CurrentVer.ToString + vbNewLine + "Release Channel: Beta" + vbNewLine + vbNewLine + "This beta release is designed for consumer testing and bleeding edge users interested in trying out pre-release software. The software may change significantly before release and updates may be discontinued for this release channel without notification." + vbNewLine + vbNewLine + "Known Issues:" + vbNewLine + "Switching between players causes the currently playing track to stop." + vbNewLine + "On rare occasions, the application may completely hang on startup.", MsgBoxStyle.Information, "About Maega Music")
     End Sub
 
     Private Sub GenuineButton2_Click(sender As Object, e As EventArgs) Handles btnResetAll.Click

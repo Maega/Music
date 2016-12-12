@@ -105,35 +105,10 @@
     <Compile Include="DarkMatter.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form1.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDBGSettings.Designer.vb">
-      <DependentUpon>frmDBGSettings.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmDBGSettings.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmSettings.Designer.vb">
       <DependentUpon>frmSettings.vb</DependentUpon>
     </Compile>
     <Compile Include="frmSettings.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmUpdHelper.Designer.vb">
-      <DependentUpon>frmUpdHelper.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmUpdHelper.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LoadFrm.Designer.vb">
-      <DependentUpon>LoadFrm.vb</DependentUpon>
-    </Compile>
-    <Compile Include="LoadFrm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -163,20 +138,8 @@
     <EmbeddedResource Include="CompatMode.resx">
       <DependentUpon>CompatMode.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDBGSettings.resx">
-      <DependentUpon>frmDBGSettings.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmSettings.resx">
       <DependentUpon>frmSettings.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmUpdHelper.resx">
-      <DependentUpon>frmUpdHelper.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LoadFrm.resx">
-      <DependentUpon>LoadFrm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

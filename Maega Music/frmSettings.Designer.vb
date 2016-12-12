@@ -74,7 +74,6 @@ Partial Class frmSettings
         Dim Bloom50 As Maega_Music.Bloom = New Maega_Music.Bloom()
         Me.GenuineTheme1 = New Maega_Music.GenuineTheme()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.chkAlwaysSafe = New System.Windows.Forms.CheckBox()
         Me.btnResetAll = New Maega_Music.GenuineButton()
         Me.GenuineButton1 = New Maega_Music.GenuineButton()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -95,6 +94,7 @@ Partial Class frmSettings
         Me.btnMiniPlayerOpacityDefault = New Maega_Music.GenuineButton()
         Me.lblMiniOpacity = New System.Windows.Forms.Label()
         Me.tbOMiniPlayer = New System.Windows.Forms.TrackBar()
+        Me.chkAlwaysSafe = New System.Windows.Forms.CheckBox()
         Me.GenuineTheme1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -157,16 +157,6 @@ Partial Class frmSettings
         Me.GroupBox3.TabIndex = 11
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Advanced Options"
-        '
-        'chkAlwaysSafe
-        '
-        Me.chkAlwaysSafe.AutoSize = True
-        Me.chkAlwaysSafe.Location = New System.Drawing.Point(59, 26)
-        Me.chkAlwaysSafe.Name = "chkAlwaysSafe"
-        Me.chkAlwaysSafe.Size = New System.Drawing.Size(269, 17)
-        Me.chkAlwaysSafe.TabIndex = 0
-        Me.chkAlwaysSafe.Text = "Use Experimental Mode (Requires Restart)"
-        Me.chkAlwaysSafe.UseVisualStyleBackColor = True
         '
         'btnResetAll
         '
@@ -495,6 +485,16 @@ Partial Class frmSettings
         Me.tbOMiniPlayer.Size = New System.Drawing.Size(241, 45)
         Me.tbOMiniPlayer.TabIndex = 1
         Me.tbOMiniPlayer.Value = 2
+        '
+        'chkAlwaysSafe
+        '
+        Me.chkAlwaysSafe.AutoSize = True
+        Me.chkAlwaysSafe.Location = New System.Drawing.Point(59, 26)
+        Me.chkAlwaysSafe.Name = "chkAlwaysSafe"
+        Me.chkAlwaysSafe.Size = New System.Drawing.Size(269, 17)
+        Me.chkAlwaysSafe.TabIndex = 0
+        Me.chkAlwaysSafe.Text = "Use Experimental Mode (Requires Restart)"
+        Me.chkAlwaysSafe.UseVisualStyleBackColor = True
         '
         'frmSettings
         '

@@ -8,13 +8,10 @@ Public Class CompatMode
     Public gocompact As Boolean = False
     Public appload As String = System.IO.Directory.GetCurrentDirectory + "/appload.htd"
     Public appintro As String = System.IO.Directory.GetCurrentDirectory + "/intro/intro.htd"
+
     Private Sub CompatMode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LicenseEO()
         Directory.SetCurrentDirectory(My.Application.Info.DirectoryPath)
-        If My.Settings.useexperimental = True Then
-            Form1.Show()
-            Me.Close()
-        End If
         Me.Height = My.Settings.savedheight
         Me.Width = My.Settings.savedwidth
         Me.Opacity = My.Settings.mainopacity
@@ -35,23 +32,7 @@ Public Class CompatMode
         My.Computer.Registry.SetValue(RegLoc, "AppDir", My.Application.Info.DirectoryPath)
         My.Computer.Registry.SetValue(RegLoc, "AppExe", Application.ExecutablePath)
         My.Computer.Registry.SetValue(RegLoc, "AppVer", CurrentVer)
-
-        If LatestVer() > CurrentVer Then
-            Dim result As Integer = MessageBox.Show("An update is available for " + AppName + ", would you like to update now?", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If result = DialogResult.Yes Then
-                My.Computer.Registry.SetValue(mihloc, "updname", AppName.Replace("Maega ", String.Empty))
-                My.Computer.Registry.SetValue(mihloc, "updid", AppID)
-                My.Computer.Registry.SetValue(mihloc, "updver", LatestVer)
-                My.Computer.Registry.SetValue(MIHLoc, "updlocalpath", My.Computer.Registry.GetValue(RegLoc, "AppExe", Nothing))
-                My.Computer.Registry.SetValue(MIHLoc, "updnow", "1")
-                Try
-                    Process.Start(My.Computer.Registry.GetValue(MIHLoc, "AppExe", Nothing))
-                    End
-                Catch ex As Exception
-                    MsgBox("Failed to launch MIH", MsgBoxStyle.Exclamation)
-                End Try
-            End If
-        End If
+        CheckForUpdates()
         '|--------------------------------------------------------------------------------------|
         '|                              End of Update Check.                                    |
         '|--------------------------------------------------------------------------------------|
@@ -68,7 +49,7 @@ Public Class CompatMode
 
     Public Sub VerifyMarkup()
         Dim veriStreamReaderL1 As System.IO.StreamReader
-        Dim veriStream As System.IO.StreamWriter
+        'Dim veriStream As System.IO.StreamWriter
         Dim veriStr As String
         veriStreamReaderL1 = System.IO.File.OpenText(appload)
         veriStr = veriStreamReaderL1.ReadToEnd()
@@ -76,11 +57,9 @@ Public Class CompatMode
         If Not veriStr.Contains("<!--HTMLKEY=[" + My.Settings.htmlkey + "]-->") Then
             MsgBox("Whoa! It looks like we couldn't verify the authenticity of an important file associated with Maega Music." + vbNewLine + vbNewLine + "Please reinstall Maega Music. If the problem persists, please contact support at support@maeganetwork.com." + vbNewLine + vbNewLine + "Advanced Details: Phase One Markup Verification Failed. Markup key does not match the application key.", MsgBoxStyle.Critical)
             End
-        Else
-            If Not veriStr.Contains("<!--PHA2KEY=[" + My.Settings.pha2key + "]-->") Then
-                MsgBox("Whoa! It looks like we couldn't verify the authenticity of an important file associated with Maega Music." + vbNewLine + vbNewLine + "Please reinstall Maega Music. If the problem persists, please contact support at support@maeganetwork.com." + vbNewLine + vbNewLine + "Advanced Details: Phase Two Markup Verification Failed. Markup key does not match the application key.", MsgBoxStyle.Critical)
-                End
-            End If
+        ElseIf Not veriStr.Contains("<!--PHA2KEY=[" + My.Settings.pha2key + "]-->") Then
+            MsgBox("Whoa! It looks like we couldn't verify the authenticity of an important file associated with Maega Music." + vbNewLine + vbNewLine + "Please reinstall Maega Music. If the problem persists, please contact support at support@maeganetwork.com." + vbNewLine + vbNewLine + "Advanced Details: Phase Two Markup Verification Failed. Markup key does not match the application key.", MsgBoxStyle.Critical)
+            End
         End If
     End Sub
 
@@ -137,7 +116,20 @@ Public Class CompatMode
             frmSettings.Show()
             'NotifyUser.Show()
         ElseIf e.CommandId = nExitCommand Then
-            Form1.ExitMusic()
+            ExitMusic()
+        End If
+    End Sub
+
+    Sub ExitMusic()
+        Dim result As Integer = MessageBox.Show("Are you sure you would like to quit Maega Music?", "Maega Music", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        If result = DialogResult.Yes Then
+            If My.Settings.savedwidth <= 500 Then My.Settings.savedwidth = 1300
+            My.Settings.safeclose = True
+            My.Settings.Save()
+            CompactMode.Close()
+            Me.Close()
+            'Application.Exit() ''Figure out why this isn't working
+            End
         End If
     End Sub
 
@@ -147,8 +139,7 @@ Public Class CompatMode
         'e.Accepted = True
 
         'REMEMBER TO ASSIGN THIS TARGETURL TO A NEW, SMALLER FORM WITH THE TOPMOST AND CENTERPARENT PROPERTIES!
-        'THAT WAY SHIT'S SEAMLESS INSTEAD OF OPENING SOME TRASH LIKE EDGE FOR SOCIAL SHARING AND AD IMPRESSIONS!!!
-        'ALSO GET THOSE FUCKING BANNER ADS SORTED! POPUPS AND INTERSTITIALS ARE CANCER!
+        'THAT WAY IT'S SEAMLESS INSTEAD OF OPENING SOME TRASH LIKE EDGE FOR SOCIAL SHARING AND AD IMPRESSIONS!!!
 
         Process.Start(e.TargetUrl)
 
@@ -158,12 +149,35 @@ Public Class CompatMode
     End Sub
 
     Sub LicenseEO()
-        'If this license gets revoked I'm going to fucking commit.
+        'Here we add the license for EO.Total so that we can use the EO.WebBrowser library uninhibited by notifications
         EO.WebBrowser.Runtime.AddLicense("yuGhWabCnrWfWbP3+hLtmuv5AxC9seLXCNzDf9vKyN/QgbrNwdvBfLDZ+Oi8dab3+hLtmuv5AxC9RoGkseeupeDn9hnynrWRm3Xj7fQQ7azcwp61n1mz8PoO5Kfq6doPvWmstMjitWqstcXnrqXg5/YZ8p7A6M+4iVmXwP0U4p7l9/YQn6fY8fbooX7GsugQ4Xvp8wge5KuZws3a66La6f8e5J61kZvLn3XY8P0a9neEjrHLu5rb6LEf+KncwbPwzme67AMa7J6ZpLEh5Kvq7QAZvFuour/boVmmwp61n1mzs/IX66juwp61n1mz8wMP5KvA8vcan53Y+PbooWmps8HdrmuntcfNn6/c9gQU7qe0psI=")
     End Sub
 
     Private Sub ntfTray_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles ntfTray.MouseDoubleClick
-        'ShowHide()
+        ShowHideCompact()
+    End Sub
+
+    Private Sub ExitMuseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitMuseToolStripMenuItem.Click
+        ExitMusic()
+    End Sub
+
+    Private Sub ShowCompactPlayerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowCompactPlayerToolStripMenuItem.Click
+        ShowHideCompact()
+    End Sub
+
+    Private Sub ShowMuseToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ShowMuseToolStripMenuItem.Click
+        ShowHide()
+    End Sub
+
+    Sub ShowHide()
+        If Me.Visible = False Then
+            Me.Show()
+        Else
+            Me.Hide()
+        End If
+    End Sub
+
+    Sub ShowHideCompact()
         If CompactMode.displayed = True Then
             CompactMode.tmrAnimation.Start()
         ElseIf CompactMode.displayed = False And Me.Visible = False Then

@@ -93,4 +93,27 @@
             Exit Sub
         End Try
     End Sub
+
+    Sub CheckForUpdates()
+        If LatestVer() > CurrentVer Then
+            Dim result As Integer = MessageBox.Show("An update is available for " + AppName + ", would you like to update now?", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+                My.Computer.Registry.SetValue(MIHLoc, "updname", AppName.Replace("Maega ", String.Empty))
+                My.Computer.Registry.SetValue(MIHLoc, "updid", AppID)
+                My.Computer.Registry.SetValue(MIHLoc, "updver", LatestVer)
+                My.Computer.Registry.SetValue(MIHLoc, "updlocalpath", My.Computer.Registry.GetValue(RegLoc, "AppExe", Nothing))
+                My.Computer.Registry.SetValue(MIHLoc, "updnow", "1")
+                Try
+                    Dim p() As Process
+                    p = Process.GetProcessesByName("InnovationHub")
+                    If Not p.Count > 0 Then
+                        Process.Start(My.Computer.Registry.GetValue(MIHLoc, "AppExe", Nothing))
+                    End If
+                    End
+                Catch ex As Exception
+                    MsgBox("Failed to launch MIH", MsgBoxStyle.Exclamation)
+                End Try
+            End If
+        End If
+    End Sub
 End Module
