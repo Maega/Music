@@ -4,7 +4,7 @@ Imports EO.WebBrowser
 
 Public Class CompatMode
     Dim nPrefCommand As Integer = CommandIds.RegisterUserCommand("Preferences")
-    Dim nExitCommand As Integer = CommandIds.RegisterUserCommand("Quit Maega Music")
+    Dim nExitCommand As Integer = CommandIds.RegisterUserCommand("Quit Maega Muse")
     Public gocompact As Boolean = False
     Public appload As String = System.IO.Directory.GetCurrentDirectory + "/appload.htd"
     Public appintro As String = System.IO.Directory.GetCurrentDirectory + "/intro/intro.htd"
@@ -103,10 +103,10 @@ Public Class CompatMode
     Private Sub WebView_BeforeContextMenu(sender As Object, e As BeforeContextMenuEventArgs)
         e.Menu.Items.Clear()
         e.Menu.Items.Add(
-            New EO.WebBrowser.MenuItem("Refresh Maega Music", CommandIds.ReloadNoCache))
+            New EO.WebBrowser.MenuItem("Refresh Maega Muse", CommandIds.ReloadNoCache))
         'e.Menu.Items.Add(EO.WebBrowser.MenuItem.CreateSeparator())
         e.Menu.Items.Add(New EO.WebBrowser.MenuItem("Preferences", nPrefCommand))
-        e.Menu.Items.Add(New EO.WebBrowser.MenuItem("Quit Maega Music", nExitCommand))
+        e.Menu.Items.Add(New EO.WebBrowser.MenuItem("Quit Maega Muse", nExitCommand))
         'e.Menu.Items.Add(New EO.WebBrowser.MenuItem("Forward", CommandIds.Forward))
     End Sub
 
@@ -121,7 +121,7 @@ Public Class CompatMode
     End Sub
 
     Sub ExitMusic()
-        Dim result As Integer = MessageBox.Show("Are you sure you would like to quit Maega Music?", "Maega Music", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+        Dim result As Integer = MessageBox.Show("Are you sure you would like to quit Maega Muse?", "Maega Muse", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If result = DialogResult.Yes Then
             If My.Settings.savedwidth <= 500 Then My.Settings.savedwidth = 1300
             My.Settings.safeclose = True

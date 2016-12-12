@@ -45,7 +45,7 @@ Partial Class CompatMode
         Me.musicView.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.musicView.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.musicView.BackColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
         Me.musicView.Location = New System.Drawing.Point(3, 1)
         Me.musicView.Name = "musicView"
         Me.musicView.Size = New System.Drawing.Size(1399, 727)
@@ -142,7 +142,7 @@ Partial Class CompatMode
         '
         Me.cxtTray.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ShowCompactPlayerToolStripMenuItem, Me.ShowMuseToolStripMenuItem, Me.ExitMuseToolStripMenuItem})
         Me.cxtTray.Name = "cxtTray"
-        Me.cxtTray.Size = New System.Drawing.Size(191, 92)
+        Me.cxtTray.Size = New System.Drawing.Size(191, 70)
         '
         'ExitMuseToolStripMenuItem
         '
