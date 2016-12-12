@@ -31,6 +31,7 @@ Partial Class CompatMode
         Me.pnlDark = New System.Windows.Forms.Panel()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.tmrLoadCheck = New System.Windows.Forms.Timer(Me.components)
+        Me.ntfTray = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.pnlDark.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -122,6 +123,15 @@ Partial Class CompatMode
         Me.tmrLoadCheck.Enabled = True
         Me.tmrLoadCheck.Interval = 2000
         '
+        'ntfTray
+        '
+        Me.ntfTray.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info
+        Me.ntfTray.BalloonTipText = "To restore Maega Muse, double click its icon in the tray"
+        Me.ntfTray.BalloonTipTitle = "Maega Muse Minimised"
+        Me.ntfTray.Icon = CType(resources.GetObject("ntfTray.Icon"), System.Drawing.Icon)
+        Me.ntfTray.Text = "Maega Muse"
+        Me.ntfTray.Visible = True
+        '
         'CompatMode
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -146,4 +156,5 @@ Partial Class CompatMode
     Friend WithEvents pnlDark As Panel
     Friend WithEvents Button4 As Button
     Friend WithEvents tmrLoadCheck As Timer
+    Friend WithEvents ntfTray As NotifyIcon
 End Class

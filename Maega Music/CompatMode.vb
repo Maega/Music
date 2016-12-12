@@ -6,9 +6,11 @@ Public Class CompatMode
     Dim nPrefCommand As Integer = CommandIds.RegisterUserCommand("Preferences")
     Dim nExitCommand As Integer = CommandIds.RegisterUserCommand("Quit Maega Music")
     Public gocompact As Boolean = False
-    Public appload As String = System.IO.Directory.GetCurrentDirectory + "/appload.htm"
+    Public appload As String = System.IO.Directory.GetCurrentDirectory + "/appload.htd"
+    Public appintro As String = System.IO.Directory.GetCurrentDirectory + "/intro/intro.htd"
     Private Sub CompatMode_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         LicenseEO()
+        Directory.SetCurrentDirectory(My.Application.Info.DirectoryPath)
         If My.Settings.useexperimental = True Then
             Form1.Show()
             Me.Close()
@@ -18,26 +20,42 @@ Public Class CompatMode
         Me.Opacity = My.Settings.mainopacity
         CenterForm()
         VerifyMarkup()
-        musicControl.LoadUrl("file:///" + appload)
-        Try
-            Dim address As String = "http://update.maeganetwork.com/music/betaver.txt"
-            Dim client As WebClient = New WebClient()
-            Dim reader As StreamReader = New StreamReader(client.OpenRead(address))
-            Dim downver As Decimal = CDec(reader.ReadToEnd)
-            If downver > Form1.localver Then
-                Dim result As Integer = MessageBox.Show("An update is available for Maega Music, update now?", "Perform Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                If result = DialogResult.Yes Then
-                    Try
-                        Process.Start(Directory.GetCurrentDirectory + "\MaegaUpdate.exe")
-                        Application.Exit()
-                    Catch ex As Exception
-                        MsgBox("The Maega Update tool appears to be missing, please reinstall Maega Music.", MsgBoxStyle.Critical, "Update Aborted")
-                    End Try
-                End If
+        'My.Settings.firstrun = True 'BOOLEAN OVERRIDE - REMOVE BEFORE PRODUCTION BUILD
+        If My.Settings.firstrun = True Then
+            My.Settings.firstrun = False
+            My.Settings.Save()
+            musicControl.LoadUrl("file:///" + appintro)
+        Else
+            musicControl.LoadUrl("file:///" + appload)
+        End If
+
+        '|--------------------------------------------------------------------------------------|
+        '| Update Check. Add this to the initial form load event alongside the Maega Update API |
+        '|--------------------------------------------------------------------------------------|
+        My.Computer.Registry.SetValue(RegLoc, "AppDir", My.Application.Info.DirectoryPath)
+        My.Computer.Registry.SetValue(RegLoc, "AppExe", Application.ExecutablePath)
+        My.Computer.Registry.SetValue(RegLoc, "AppVer", CurrentVer)
+
+        If LatestVer() > CurrentVer Then
+            Dim result As Integer = MessageBox.Show("An update is available for " + AppName + ", would you like to update now?", "Update Available", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If result = DialogResult.Yes Then
+                My.Computer.Registry.SetValue(mihloc, "updname", AppName.Replace("Maega ", String.Empty))
+                My.Computer.Registry.SetValue(mihloc, "updid", AppID)
+                My.Computer.Registry.SetValue(mihloc, "updver", LatestVer)
+                My.Computer.Registry.SetValue(MIHLoc, "updlocalpath", My.Computer.Registry.GetValue(RegLoc, "AppExe", Nothing))
+                My.Computer.Registry.SetValue(MIHLoc, "updnow", "1")
+                Try
+                    Process.Start(My.Computer.Registry.GetValue(MIHLoc, "AppExe", Nothing))
+                    End
+                Catch ex As Exception
+                    MsgBox("Failed to launch MIH", MsgBoxStyle.Exclamation)
+                End Try
             End If
-        Catch exo As Exception
-            MsgBox("Checking for updates has failed. The servers may be experiencing issues or Maega Music might need a manual update." + vbNewLine + vbNewLine + "Please try again later. If the problem persists, check https://music.maeganetwork.com/windows for more information.", MsgBoxStyle.Critical)
-        End Try
+        End If
+        '|--------------------------------------------------------------------------------------|
+        '|                              End of Update Check.                                    |
+        '|--------------------------------------------------------------------------------------|
+
         'Attach event handler
         AddHandler musicControl.BeforeContextMenu, New BeforeContextMenuHandler(AddressOf WebView_BeforeContextMenu)
         AddHandler musicControl.Command, New CommandHandler(AddressOf nRef_Command)
@@ -124,31 +142,37 @@ Public Class CompatMode
     End Sub
 
     Private Sub WebView_NewWindow(sender As Object, e As NewWindowEventArgs)
-        'The new WebView has already been created (e.WebView). Here we
-        'associates it with a new WebViewItem object and creates a
-        'new tab button for it (by adding it to m_Pages)
-        'Dim item As WebViewItem = NewWebViewItem(e.WebView)
-
-        'Signifies that we accept the new WebView. Without this line
-        'the newly created WebView will be immediately destroyed
+        'Below signifies that we accept the new WebView. Without this line
+        'the newly created WebView will be immediately destroyed...
+        'e.Accepted = True
 
         'REMEMBER TO ASSIGN THIS TARGETURL TO A NEW, SMALLER FORM WITH THE TOPMOST AND CENTERPARENT PROPERTIES!
         'THAT WAY SHIT'S SEAMLESS INSTEAD OF OPENING SOME TRASH LIKE EDGE FOR SOCIAL SHARING AND AD IMPRESSIONS!!!
         'ALSO GET THOSE FUCKING BANNER ADS SORTED! POPUPS AND INTERSTITIALS ARE CANCER!
 
         Process.Start(e.TargetUrl)
-        'e.Accepted = True
 
-        'If you do not want to open a new window but wish to open
-        'the new Url in the same window, comment the code above
-        'and uncomment the code below. The code below set the existing
-        'WebView's Url to the new Url. Also because it did not set
-        'e.Accepted to true, so the new WebView will be discarded.
-        'EO.WebBrowser.WebView webView = (EO.WebBrowser.WebView)sender;
-        'webView.Url = e.TargetUrl;
+        'Below line would set the current WebView's URL to the target
+        'That loads the page in the current WebView, instead of launching a browser or some other shit, duh.
+        'webView.Url = e.TargetUrl
     End Sub
 
     Sub LicenseEO()
+        'If this license gets revoked I'm going to fucking commit.
         EO.WebBrowser.Runtime.AddLicense("yuGhWabCnrWfWbP3+hLtmuv5AxC9seLXCNzDf9vKyN/QgbrNwdvBfLDZ+Oi8dab3+hLtmuv5AxC9RoGkseeupeDn9hnynrWRm3Xj7fQQ7azcwp61n1mz8PoO5Kfq6doPvWmstMjitWqstcXnrqXg5/YZ8p7A6M+4iVmXwP0U4p7l9/YQn6fY8fbooX7GsugQ4Xvp8wge5KuZws3a66La6f8e5J61kZvLn3XY8P0a9neEjrHLu5rb6LEf+KncwbPwzme67AMa7J6ZpLEh5Kvq7QAZvFuour/boVmmwp61n1mzs/IX66juwp61n1mz8wMP5KvA8vcan53Y+PbooWmps8HdrmuntcfNn6/c9gQU7qe0psI=")
+    End Sub
+
+    Private Sub ntfTray_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles ntfTray.MouseDoubleClick
+        'ShowHide()
+        If CompactMode.displayed = True Then
+            CompactMode.tmrAnimation.Start()
+        ElseIf CompactMode.displayed = False And Me.Visible = False Then
+            gocompact = True
+            CompactMode.Location = New Point(Screen.PrimaryScreen.WorkingArea.Width - 535, Screen.PrimaryScreen.WorkingArea.Height - -100)
+            CompactMode.Show()
+            CompactMode.tmrAnimation.Start()
+        Else
+            Me.Hide()
+        End If
     End Sub
 End Class
