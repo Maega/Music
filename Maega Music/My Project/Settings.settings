@@ -2,38 +2,17 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
   <Profiles />
   <Settings>
-    <Setting Name="adminenabled" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="dosequential" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="userbeta" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="savedwidth" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1420</Value>
     </Setting>
     <Setting Name="savedheight" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">770</Value>
     </Setting>
-    <Setting Name="miniopacity" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">0.5</Value>
-    </Setting>
     <Setting Name="compactopacity" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">1</Value>
     </Setting>
-    <Setting Name="bordercolour" Type="System.String" Scope="User">
-      <Value Profile="(Default)">white</Value>
-    </Setting>
     <Setting Name="mainopacity" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">1</Value>
-    </Setting>
-    <Setting Name="safeclose" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="useexperimental" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="htmlkey" Type="System.String" Scope="User">
       <Value Profile="(Default)">z2cisuoza1ncmpcpvh0a</Value>

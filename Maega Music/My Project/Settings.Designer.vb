@@ -56,42 +56,6 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property adminenabled() As Boolean
-            Get
-                Return CType(Me("adminenabled"),Boolean)
-            End Get
-            Set
-                Me("adminenabled") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property dosequential() As Boolean
-            Get
-                Return CType(Me("dosequential"),Boolean)
-            End Get
-            Set
-                Me("dosequential") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-        Public Property userbeta() As Boolean
-            Get
-                Return CType(Me("userbeta"),Boolean)
-            End Get
-            Set
-                Me("userbeta") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("1420")>  _
         Public Property savedwidth() As Integer
             Get
@@ -116,18 +80,6 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("0.5")>  _
-        Public Property miniopacity() As Decimal
-            Get
-                Return CType(Me("miniopacity"),Decimal)
-            End Get
-            Set
-                Me("miniopacity") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
         Public Property compactopacity() As Decimal
             Get
@@ -140,18 +92,6 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("white")>  _
-        Public Property bordercolour() As String
-            Get
-                Return CType(Me("bordercolour"),String)
-            End Get
-            Set
-                Me("bordercolour") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("1")>  _
         Public Property mainopacity() As Decimal
             Get
@@ -159,30 +99,6 @@ Namespace My
             End Get
             Set
                 Me("mainopacity") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
-        Public Property safeclose() As Boolean
-            Get
-                Return CType(Me("safeclose"),Boolean)
-            End Get
-            Set
-                Me("safeclose") = value
-            End Set
-        End Property
-        
-        <Global.System.Configuration.UserScopedSettingAttribute(),  _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
-        Public Property useexperimental() As Boolean
-            Get
-                Return CType(Me("useexperimental"),Boolean)
-            End Get
-            Set
-                Me("useexperimental") = value
             End Set
         End Property
         
@@ -232,9 +148,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.Maega_Music.My.MySettings
+        Friend ReadOnly Property Settings() As Global.Maega_Muse.My.MySettings
             Get
-                Return Global.Maega_Music.My.MySettings.Default
+                Return Global.Maega_Muse.My.MySettings.Default
             End Get
         End Property
     End Module

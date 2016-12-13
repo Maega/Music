@@ -18,12 +18,6 @@
     End Sub
 
     Private Sub frmSettings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If My.Settings.useexperimental = False Then
-            'GroupBox1.Enabled = False
-            'GroupBox1.Text = "Transparency Settings - Only takes effect in Experimental Mode"
-            'GroupBox2.Enabled = False
-            GroupBox2.Text = "Border Colour - Only takes effect in Experimental Mode"
-        End If
 
         CenterForm()
 
@@ -47,14 +41,6 @@
         If mainopacityC = 1 Then mainopacityC = 10
         tbOMain.Value = mainopacityC
         lblMainOpacity.Text = "Normal Opacity: " + CStr(mainopacityL * 100) + "%"
-
-        If My.Settings.bordercolour = "white" Then radWhite.Checked = True
-        If My.Settings.bordercolour = "blue" Then radBlue.Checked = True
-        If My.Settings.bordercolour = "red" Then radRed.Checked = True
-        If My.Settings.bordercolour = "green" Then radGreen.Checked = True
-        If My.Settings.bordercolour = "yellow" Then radYellow.Checked = True
-
-        If My.Settings.useexperimental = True Then chkAlwaysSafe.Checked = True
     End Sub
 
     Private Sub GenuineButton1_Click(sender As Object, e As EventArgs) Handles btnClose.Click
@@ -75,15 +61,6 @@
         My.Settings.Save()
         CompactMode.Opacity = compactopacityL
         'If Form1.btnCompact.Text = ">" Then Form1.Opacity = My.Settings.compactopacity
-    End Sub
-
-    Private Sub Bordercolour_CheckedChanged(sender As Object, e As EventArgs) Handles radWhite.CheckedChanged, radBlue.CheckedChanged, radGreen.CheckedChanged, radRed.CheckedChanged, radYellow.CheckedChanged
-        If radWhite.Checked = True Then My.Settings.bordercolour = "white"
-        If radBlue.Checked = True Then My.Settings.bordercolour = "blue"
-        If radRed.Checked = True Then My.Settings.bordercolour = "red"
-        If radGreen.Checked = True Then My.Settings.bordercolour = "green"
-        If radYellow.Checked = True Then My.Settings.bordercolour = "yellow"
-        CompatMode.Invalidate()
     End Sub
 
     Private Sub btnCompactOpacityDefault_Click(sender As Object, e As EventArgs) Handles btnCompactOpacityDefault.Click
@@ -123,16 +100,6 @@
             My.Settings.Save()
             Application.Restart()
         End If
-    End Sub
-
-    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles chkAlwaysSafe.CheckedChanged
-        If chkAlwaysSafe.Checked = True Then
-            My.Settings.useexperimental = True
-            My.Settings.safeclose = True
-        Else
-            My.Settings.useexperimental = False
-        End If
-        My.Settings.Save()
     End Sub
 
     Private Sub GenuineTheme1_Click(sender As Object, e As EventArgs)

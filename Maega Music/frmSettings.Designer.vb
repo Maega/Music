@@ -22,54 +22,55 @@ Partial Class frmSettings
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim Bloom1 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom2 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom3 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom4 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom5 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom6 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom7 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom8 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom9 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom10 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom11 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom12 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom13 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom14 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom15 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom16 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom17 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom18 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom19 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom20 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom21 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom22 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom23 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom24 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom25 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom26 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom27 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom28 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom29 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom30 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom31 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom32 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom33 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom34 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom35 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom36 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom37 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom38 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom39 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom40 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom41 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom42 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom43 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Me.GenuineTheme1 = New Maega_Music.GenuineTheme()
+        Dim Bloom1 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom2 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom3 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom4 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom5 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom6 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom7 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom8 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom9 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom10 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom11 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom12 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom13 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom14 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom15 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom16 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom17 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom18 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom19 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom20 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom21 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom22 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom23 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom24 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom25 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom26 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom27 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom28 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom29 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom30 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom31 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom32 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom33 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom34 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom35 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom36 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom37 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom38 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom39 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom40 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom41 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom42 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim Bloom43 As Maega_Muse.Bloom = New Maega_Muse.Bloom()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSettings))
+        Me.GenuineTheme1 = New Maega_Muse.GenuineTheme()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.chkAlwaysSafe = New System.Windows.Forms.CheckBox()
-        Me.btnResetAll = New Maega_Music.GenuineButton()
-        Me.GenuineButton1 = New Maega_Music.GenuineButton()
+        Me.btnResetAll = New Maega_Muse.GenuineButton()
+        Me.GenuineButton1 = New Maega_Muse.GenuineButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.radYellow = New System.Windows.Forms.RadioButton()
@@ -77,12 +78,12 @@ Partial Class frmSettings
         Me.radBlue = New System.Windows.Forms.RadioButton()
         Me.radRed = New System.Windows.Forms.RadioButton()
         Me.radGreen = New System.Windows.Forms.RadioButton()
-        Me.btnClose = New Maega_Music.GenuineButton()
+        Me.btnClose = New Maega_Muse.GenuineButton()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.btnMainOpacityDefault = New Maega_Music.GenuineButton()
+        Me.btnMainOpacityDefault = New Maega_Muse.GenuineButton()
         Me.lblMainOpacity = New System.Windows.Forms.Label()
         Me.tbOMain = New System.Windows.Forms.TrackBar()
-        Me.btnCompactOpacityDefault = New Maega_Music.GenuineButton()
+        Me.btnCompactOpacityDefault = New Maega_Muse.GenuineButton()
         Me.lblCompactOpacity = New System.Windows.Forms.Label()
         Me.tbOCompact = New System.Windows.Forms.TrackBar()
         Me.GenuineTheme1.SuspendLayout()
@@ -113,7 +114,7 @@ Partial Class frmSettings
         Bloom7.Value = System.Drawing.Color.FromArgb(CType(CType(58, Byte), Integer), CType(CType(58, Byte), Integer), CType(CType(58, Byte), Integer))
         Bloom8.Name = "Border2"
         Bloom8.Value = System.Drawing.Color.Black
-        Me.GenuineTheme1.Colors = New Maega_Music.Bloom() {Bloom1, Bloom2, Bloom3, Bloom4, Bloom5, Bloom6, Bloom7, Bloom8}
+        Me.GenuineTheme1.Colors = New Maega_Muse.Bloom() {Bloom1, Bloom2, Bloom3, Bloom4, Bloom5, Bloom6, Bloom7, Bloom8}
         Me.GenuineTheme1.Controls.Add(Me.GroupBox3)
         Me.GenuineTheme1.Controls.Add(Me.btnResetAll)
         Me.GenuineTheme1.Controls.Add(Me.GenuineButton1)
@@ -175,7 +176,7 @@ Partial Class frmSettings
         Bloom14.Value = System.Drawing.Color.FromArgb(CType(CType(12, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Bloom15.Name = "Border2"
         Bloom15.Value = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(25, Byte), Integer), CType(CType(25, Byte), Integer))
-        Me.btnResetAll.Colors = New Maega_Music.Bloom() {Bloom9, Bloom10, Bloom11, Bloom12, Bloom13, Bloom14, Bloom15}
+        Me.btnResetAll.Colors = New Maega_Muse.Bloom() {Bloom9, Bloom10, Bloom11, Bloom12, Bloom13, Bloom14, Bloom15}
         Me.btnResetAll.Customization = "KSkp/zMzM/8zMzP/KSkp//////////8MGRkZ/w=="
         Me.btnResetAll.Font = New System.Drawing.Font("Verdana", 8.0!)
         Me.btnResetAll.Image = Nothing
@@ -203,7 +204,7 @@ Partial Class frmSettings
         Bloom21.Value = System.Drawing.Color.FromArgb(CType(CType(12, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Bloom22.Name = "Border2"
         Bloom22.Value = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(25, Byte), Integer), CType(CType(25, Byte), Integer))
-        Me.GenuineButton1.Colors = New Maega_Music.Bloom() {Bloom16, Bloom17, Bloom18, Bloom19, Bloom20, Bloom21, Bloom22}
+        Me.GenuineButton1.Colors = New Maega_Muse.Bloom() {Bloom16, Bloom17, Bloom18, Bloom19, Bloom20, Bloom21, Bloom22}
         Me.GenuineButton1.Customization = "KSkp/zMzM/8zMzP/KSkp//////////8MGRkZ/w=="
         Me.GenuineButton1.Font = New System.Drawing.Font("Verdana", 8.0!)
         Me.GenuineButton1.Image = Nothing
@@ -313,7 +314,7 @@ Partial Class frmSettings
         Bloom28.Value = System.Drawing.Color.FromArgb(CType(CType(12, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Bloom29.Name = "Border2"
         Bloom29.Value = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(25, Byte), Integer), CType(CType(25, Byte), Integer))
-        Me.btnClose.Colors = New Maega_Music.Bloom() {Bloom23, Bloom24, Bloom25, Bloom26, Bloom27, Bloom28, Bloom29}
+        Me.btnClose.Colors = New Maega_Muse.Bloom() {Bloom23, Bloom24, Bloom25, Bloom26, Bloom27, Bloom28, Bloom29}
         Me.btnClose.Customization = "KSkp/zMzM/8zMzP/KSkp//////////8MGRkZ/w=="
         Me.btnClose.Font = New System.Drawing.Font("Verdana", 8.0!)
         Me.btnClose.Image = Nothing
@@ -357,7 +358,7 @@ Partial Class frmSettings
         Bloom35.Value = System.Drawing.Color.FromArgb(CType(CType(12, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Bloom36.Name = "Border2"
         Bloom36.Value = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(25, Byte), Integer), CType(CType(25, Byte), Integer))
-        Me.btnMainOpacityDefault.Colors = New Maega_Music.Bloom() {Bloom30, Bloom31, Bloom32, Bloom33, Bloom34, Bloom35, Bloom36}
+        Me.btnMainOpacityDefault.Colors = New Maega_Muse.Bloom() {Bloom30, Bloom31, Bloom32, Bloom33, Bloom34, Bloom35, Bloom36}
         Me.btnMainOpacityDefault.Customization = "KSkp/zMzM/8zMzP/KSkp//////////8MGRkZ/w=="
         Me.btnMainOpacityDefault.Font = New System.Drawing.Font("Verdana", 8.0!)
         Me.btnMainOpacityDefault.Image = Nothing
@@ -405,7 +406,7 @@ Partial Class frmSettings
         Bloom42.Value = System.Drawing.Color.FromArgb(CType(CType(12, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
         Bloom43.Name = "Border2"
         Bloom43.Value = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(25, Byte), Integer), CType(CType(25, Byte), Integer))
-        Me.btnCompactOpacityDefault.Colors = New Maega_Music.Bloom() {Bloom37, Bloom38, Bloom39, Bloom40, Bloom41, Bloom42, Bloom43}
+        Me.btnCompactOpacityDefault.Colors = New Maega_Muse.Bloom() {Bloom37, Bloom38, Bloom39, Bloom40, Bloom41, Bloom42, Bloom43}
         Me.btnCompactOpacityDefault.Customization = "KSkp/zMzM/8zMzP/KSkp//////////8MGRkZ/w=="
         Me.btnCompactOpacityDefault.Font = New System.Drawing.Font("Verdana", 8.0!)
         Me.btnCompactOpacityDefault.Image = Nothing
@@ -445,6 +446,7 @@ Partial Class frmSettings
         Me.ClientSize = New System.Drawing.Size(793, 411)
         Me.Controls.Add(Me.GenuineTheme1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSettings"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

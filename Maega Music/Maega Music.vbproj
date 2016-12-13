@@ -6,9 +6,9 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{57D5CCE0-CDFC-4F2C-A623-BF65A45CA126}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>Maega_Music.My.MyApplication</StartupObject>
-    <RootNamespace>Maega_Music</RootNamespace>
-    <AssemblyName>music</AssemblyName>
+    <StartupObject>Maega_Muse.My.MyApplication</StartupObject>
+    <RootNamespace>Maega_Muse</RootNamespace>
+    <AssemblyName>muse</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
@@ -21,7 +21,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>music.xml</DocumentationFile>
+    <DocumentationFile>muse.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -31,7 +31,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>music.xml</DocumentationFile>
+    <DocumentationFile>muse.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -47,7 +47,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>MasterLogo1088.ico</ApplicationIcon>
+    <ApplicationIcon>purplelogo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EO.Base, Version=16.2.72.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
@@ -166,6 +166,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MasterLogo1088.ico" />
+    <Content Include="purplelogo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

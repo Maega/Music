@@ -124,7 +124,6 @@ Public Class CompatMode
         Dim result As Integer = MessageBox.Show("Are you sure you would like to quit Maega Muse?", "Maega Muse", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
         If result = DialogResult.Yes Then
             If My.Settings.savedwidth <= 500 Then My.Settings.savedwidth = 1300
-            My.Settings.safeclose = True
             My.Settings.Save()
             CompactMode.Close()
             Me.Close()
