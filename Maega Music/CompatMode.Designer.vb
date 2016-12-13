@@ -33,9 +33,9 @@ Partial Class CompatMode
         Me.tmrLoadCheck = New System.Windows.Forms.Timer(Me.components)
         Me.ntfTray = New System.Windows.Forms.NotifyIcon(Me.components)
         Me.cxtTray = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ExitMuseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ShowMuseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShowCompactPlayerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ShowMuseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitMuseToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.pnlDark.SuspendLayout()
         Me.cxtTray.SuspendLayout()
         Me.SuspendLayout()
@@ -144,11 +144,11 @@ Partial Class CompatMode
         Me.cxtTray.Name = "cxtTray"
         Me.cxtTray.Size = New System.Drawing.Size(191, 70)
         '
-        'ExitMuseToolStripMenuItem
+        'ShowCompactPlayerToolStripMenuItem
         '
-        Me.ExitMuseToolStripMenuItem.Name = "ExitMuseToolStripMenuItem"
-        Me.ExitMuseToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.ExitMuseToolStripMenuItem.Text = "Exit Muse"
+        Me.ShowCompactPlayerToolStripMenuItem.Name = "ShowCompactPlayerToolStripMenuItem"
+        Me.ShowCompactPlayerToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
+        Me.ShowCompactPlayerToolStripMenuItem.Text = "Show Compact Player"
         '
         'ShowMuseToolStripMenuItem
         '
@@ -156,11 +156,11 @@ Partial Class CompatMode
         Me.ShowMuseToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
         Me.ShowMuseToolStripMenuItem.Text = "Show Muse"
         '
-        'ShowCompactPlayerToolStripMenuItem
+        'ExitMuseToolStripMenuItem
         '
-        Me.ShowCompactPlayerToolStripMenuItem.Name = "ShowCompactPlayerToolStripMenuItem"
-        Me.ShowCompactPlayerToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
-        Me.ShowCompactPlayerToolStripMenuItem.Text = "Show Compact Player"
+        Me.ExitMuseToolStripMenuItem.Name = "ExitMuseToolStripMenuItem"
+        Me.ExitMuseToolStripMenuItem.Size = New System.Drawing.Size(190, 22)
+        Me.ExitMuseToolStripMenuItem.Text = "Exit Muse"
         '
         'CompatMode
         '
@@ -173,7 +173,7 @@ Partial Class CompatMode
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "CompatMode"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Maega Music Beta"
+        Me.Text = "Maega Muse Beta 1 (Codename Bombay Rock)"
         Me.pnlDark.ResumeLayout(False)
         Me.cxtTray.ResumeLayout(False)
         Me.ResumeLayout(False)

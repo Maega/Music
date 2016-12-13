@@ -12,21 +12,6 @@
     Dim mainopacityL As Decimal
     Dim mainopacityC As Integer
 
-    Private Sub TrackBar1_Scroll(sender As Object, e As EventArgs) Handles tbOMiniPlayer.Scroll
-        TrackBarMPChanged()
-    End Sub
-
-    Sub TrackBarMPChanged()
-        miniopacityS = "0." + tbOMiniPlayer.Value.ToString
-        miniopacityD = CDec(miniopacityS)
-        If miniopacityD = 0.1 Then miniopacityD = 1
-        My.Settings.miniopacity = miniopacityD.ToString
-        miniopacityL = My.Settings.miniopacity.ToString
-        lblMiniOpacity.Text = "MiniPlayer Opacity: " + CStr(miniopacityL * 100) + "%"
-        My.Settings.Save()
-        'If Form1.Button1.Text = ">" Then Form1.Opacity = My.Settings.miniopacity
-    End Sub
-
     Private Sub CenterForm()
         Me.Left = (Screen.PrimaryScreen.WorkingArea.Width - Me.Width) / 2
         Me.Top = (Screen.PrimaryScreen.WorkingArea.Height - Me.Height) / 2
@@ -41,12 +26,13 @@
         End If
 
         CenterForm()
-        miniopacityL = My.Settings.miniopacity.ToString
-        lblMiniOpacity.Text = CStr(miniopacityL * 100) + "%"
-        miniopacityC = CInt(lblMiniOpacity.Text.Trim("0", "%", "."))
-        If miniopacityC = 1 Then miniopacityC = 10
-        tbOMiniPlayer.Value = miniopacityC
-        lblMiniOpacity.Text = "MiniPlayer Opacity: " + CStr(miniopacityL * 100) + "%"
+
+        'miniopacityL = My.Settings.miniopacity.ToString
+        'lblMiniOpacity.Text = CStr(miniopacityL * 100) + "%"
+        'miniopacityC = CInt(lblMiniOpacity.Text.Trim("0", "%", "."))
+        'If miniopacityC = 1 Then miniopacityC = 10
+        'tbOMiniPlayer.Value = miniopacityC
+        'lblMiniOpacity.Text = "MiniPlayer Opacity: " + CStr(miniopacityL * 100) + "%"
 
         compactopacityL = My.Settings.compactopacity.ToString
         lblCompactOpacity.Text = CStr(compactopacityL * 100) + "%"
@@ -71,11 +57,6 @@
         If My.Settings.useexperimental = True Then chkAlwaysSafe.Checked = True
     End Sub
 
-    Private Sub btnMiniPlayerOpacityDefault_Click(sender As Object, e As EventArgs) Handles btnMiniPlayerOpacityDefault.Click
-        tbOMiniPlayer.Value = 5
-        TrackBarMPChanged()
-    End Sub
-
     Private Sub GenuineButton1_Click(sender As Object, e As EventArgs) Handles btnClose.Click
         Me.Close()
     End Sub
@@ -92,6 +73,7 @@
         compactopacityL = My.Settings.compactopacity.ToString
         lblCompactOpacity.Text = "Compact Mode Opacity: " + CStr(compactopacityL * 100) + "%"
         My.Settings.Save()
+        CompactMode.Opacity = compactopacityL
         'If Form1.btnCompact.Text = ">" Then Form1.Opacity = My.Settings.compactopacity
     End Sub
 
@@ -131,7 +113,7 @@
     End Sub
 
     Private Sub GenuineButton1_Click_1(sender As Object, e As EventArgs) Handles GenuineButton1.Click
-        MsgBox("Maega Muse" + vbNewLine + "Maega Muse Client for Microsoft Windows" + vbNewLine + "Version: " + CurrentVer.ToString + vbNewLine + "Release Channel: Beta" + vbNewLine + vbNewLine + "This beta release is designed for consumer testing and bleeding edge users interested in trying out pre-release software. The software may change significantly before release and updates may be discontinued for this release channel without notification." + vbNewLine + vbNewLine + "Known Issues:" + vbNewLine + "Switching between players causes the currently playing track to stop.", MsgBoxStyle.Information, "About Maega Music")
+        MsgBox("Maega Muse" + vbNewLine + "Maega Muse Client for Microsoft Windows" + vbNewLine + "Version: " + CurrentVer.ToString + " - Bombay Rock Beta" + vbNewLine + "Release Channel: Beta" + vbNewLine + vbNewLine + "This beta release is designed for consumer testing and bleeding edge users interested in trying out pre-release software. The software may change significantly before release and updates may be discontinued for this release channel without notification." + vbNewLine + vbNewLine + "Known Issues:" + vbNewLine + "Switching between players causes the currently playing track to stop.", MsgBoxStyle.Information, "About Maega Music")
     End Sub
 
     Private Sub GenuineButton2_Click(sender As Object, e As EventArgs) Handles btnResetAll.Click

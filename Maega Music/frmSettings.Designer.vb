@@ -65,13 +65,6 @@ Partial Class frmSettings
         Dim Bloom41 As Maega_Music.Bloom = New Maega_Music.Bloom()
         Dim Bloom42 As Maega_Music.Bloom = New Maega_Music.Bloom()
         Dim Bloom43 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom44 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom45 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom46 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom47 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom48 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom49 As Maega_Music.Bloom = New Maega_Music.Bloom()
-        Dim Bloom50 As Maega_Music.Bloom = New Maega_Music.Bloom()
         Me.GenuineTheme1 = New Maega_Music.GenuineTheme()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.chkAlwaysSafe = New System.Windows.Forms.CheckBox()
@@ -92,16 +85,12 @@ Partial Class frmSettings
         Me.btnCompactOpacityDefault = New Maega_Music.GenuineButton()
         Me.lblCompactOpacity = New System.Windows.Forms.Label()
         Me.tbOCompact = New System.Windows.Forms.TrackBar()
-        Me.btnMiniPlayerOpacityDefault = New Maega_Music.GenuineButton()
-        Me.lblMiniOpacity = New System.Windows.Forms.Label()
-        Me.tbOMiniPlayer = New System.Windows.Forms.TrackBar()
         Me.GenuineTheme1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.tbOMain, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tbOCompact, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbOMiniPlayer, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GenuineTheme1
@@ -157,6 +146,7 @@ Partial Class frmSettings
         Me.GroupBox3.TabIndex = 11
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Advanced Options"
+        Me.GroupBox3.Visible = False
         '
         'chkAlwaysSafe
         '
@@ -250,6 +240,7 @@ Partial Class frmSettings
         Me.GroupBox2.TabIndex = 10
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Border Colour"
+        Me.GroupBox2.Visible = False
         '
         'radYellow
         '
@@ -342,9 +333,6 @@ Partial Class frmSettings
         Me.GroupBox1.Controls.Add(Me.btnCompactOpacityDefault)
         Me.GroupBox1.Controls.Add(Me.lblCompactOpacity)
         Me.GroupBox1.Controls.Add(Me.tbOCompact)
-        Me.GroupBox1.Controls.Add(Me.btnMiniPlayerOpacityDefault)
-        Me.GroupBox1.Controls.Add(Me.lblMiniOpacity)
-        Me.GroupBox1.Controls.Add(Me.tbOMiniPlayer)
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
         Me.GroupBox1.Location = New System.Drawing.Point(12, 261)
         Me.GroupBox1.Name = "GroupBox1"
@@ -373,7 +361,7 @@ Partial Class frmSettings
         Me.btnMainOpacityDefault.Customization = "KSkp/zMzM/8zMzP/KSkp//////////8MGRkZ/w=="
         Me.btnMainOpacityDefault.Font = New System.Drawing.Font("Verdana", 8.0!)
         Me.btnMainOpacityDefault.Image = Nothing
-        Me.btnMainOpacityDefault.Location = New System.Drawing.Point(575, 98)
+        Me.btnMainOpacityDefault.Location = New System.Drawing.Point(459, 98)
         Me.btnMainOpacityDefault.Name = "btnMainOpacityDefault"
         Me.btnMainOpacityDefault.NoRounding = False
         Me.btnMainOpacityDefault.Size = New System.Drawing.Size(115, 23)
@@ -385,7 +373,7 @@ Partial Class frmSettings
         '
         Me.lblMainOpacity.Font = New System.Drawing.Font("Segoe UI Light", 10.0!)
         Me.lblMainOpacity.ForeColor = System.Drawing.Color.White
-        Me.lblMainOpacity.Location = New System.Drawing.Point(513, 70)
+        Me.lblMainOpacity.Location = New System.Drawing.Point(397, 70)
         Me.lblMainOpacity.Name = "lblMainOpacity"
         Me.lblMainOpacity.Size = New System.Drawing.Size(241, 21)
         Me.lblMainOpacity.TabIndex = 8
@@ -394,7 +382,7 @@ Partial Class frmSettings
         '
         'tbOMain
         '
-        Me.tbOMain.Location = New System.Drawing.Point(513, 30)
+        Me.tbOMain.Location = New System.Drawing.Point(397, 30)
         Me.tbOMain.Minimum = 2
         Me.tbOMain.Name = "tbOMain"
         Me.tbOMain.Size = New System.Drawing.Size(241, 45)
@@ -421,7 +409,7 @@ Partial Class frmSettings
         Me.btnCompactOpacityDefault.Customization = "KSkp/zMzM/8zMzP/KSkp//////////8MGRkZ/w=="
         Me.btnCompactOpacityDefault.Font = New System.Drawing.Font("Verdana", 8.0!)
         Me.btnCompactOpacityDefault.Image = Nothing
-        Me.btnCompactOpacityDefault.Location = New System.Drawing.Point(328, 98)
+        Me.btnCompactOpacityDefault.Location = New System.Drawing.Point(192, 98)
         Me.btnCompactOpacityDefault.Name = "btnCompactOpacityDefault"
         Me.btnCompactOpacityDefault.NoRounding = False
         Me.btnCompactOpacityDefault.Size = New System.Drawing.Size(115, 23)
@@ -433,7 +421,7 @@ Partial Class frmSettings
         '
         Me.lblCompactOpacity.Font = New System.Drawing.Font("Segoe UI Light", 10.0!)
         Me.lblCompactOpacity.ForeColor = System.Drawing.Color.White
-        Me.lblCompactOpacity.Location = New System.Drawing.Point(266, 70)
+        Me.lblCompactOpacity.Location = New System.Drawing.Point(130, 70)
         Me.lblCompactOpacity.Name = "lblCompactOpacity"
         Me.lblCompactOpacity.Size = New System.Drawing.Size(241, 21)
         Me.lblCompactOpacity.TabIndex = 5
@@ -442,60 +430,12 @@ Partial Class frmSettings
         '
         'tbOCompact
         '
-        Me.tbOCompact.Location = New System.Drawing.Point(266, 30)
+        Me.tbOCompact.Location = New System.Drawing.Point(130, 30)
         Me.tbOCompact.Minimum = 2
         Me.tbOCompact.Name = "tbOCompact"
         Me.tbOCompact.Size = New System.Drawing.Size(241, 45)
         Me.tbOCompact.TabIndex = 4
         Me.tbOCompact.Value = 2
-        '
-        'btnMiniPlayerOpacityDefault
-        '
-        Bloom44.Name = "DownGradient1"
-        Bloom44.Value = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(41, Byte), Integer), CType(CType(41, Byte), Integer))
-        Bloom45.Name = "DownGradient2"
-        Bloom45.Value = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
-        Bloom46.Name = "NoneGradient1"
-        Bloom46.Value = System.Drawing.Color.FromArgb(CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer), CType(CType(51, Byte), Integer))
-        Bloom47.Name = "NoneGradient2"
-        Bloom47.Value = System.Drawing.Color.FromArgb(CType(CType(41, Byte), Integer), CType(CType(41, Byte), Integer), CType(CType(41, Byte), Integer))
-        Bloom48.Name = "Text"
-        Bloom48.Value = System.Drawing.Color.White
-        Bloom49.Name = "Border1"
-        Bloom49.Value = System.Drawing.Color.FromArgb(CType(CType(12, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer))
-        Bloom50.Name = "Border2"
-        Bloom50.Value = System.Drawing.Color.FromArgb(CType(CType(25, Byte), Integer), CType(CType(25, Byte), Integer), CType(CType(25, Byte), Integer))
-        Me.btnMiniPlayerOpacityDefault.Colors = New Maega_Music.Bloom() {Bloom44, Bloom45, Bloom46, Bloom47, Bloom48, Bloom49, Bloom50}
-        Me.btnMiniPlayerOpacityDefault.Customization = "KSkp/zMzM/8zMzP/KSkp//////////8MGRkZ/w=="
-        Me.btnMiniPlayerOpacityDefault.Font = New System.Drawing.Font("Verdana", 8.0!)
-        Me.btnMiniPlayerOpacityDefault.Image = Nothing
-        Me.btnMiniPlayerOpacityDefault.Location = New System.Drawing.Point(81, 98)
-        Me.btnMiniPlayerOpacityDefault.Name = "btnMiniPlayerOpacityDefault"
-        Me.btnMiniPlayerOpacityDefault.NoRounding = False
-        Me.btnMiniPlayerOpacityDefault.Size = New System.Drawing.Size(115, 23)
-        Me.btnMiniPlayerOpacityDefault.TabIndex = 0
-        Me.btnMiniPlayerOpacityDefault.Text = "Set Default"
-        Me.btnMiniPlayerOpacityDefault.Transparent = False
-        '
-        'lblMiniOpacity
-        '
-        Me.lblMiniOpacity.Font = New System.Drawing.Font("Segoe UI Light", 10.0!)
-        Me.lblMiniOpacity.ForeColor = System.Drawing.Color.White
-        Me.lblMiniOpacity.Location = New System.Drawing.Point(19, 70)
-        Me.lblMiniOpacity.Name = "lblMiniOpacity"
-        Me.lblMiniOpacity.Size = New System.Drawing.Size(241, 21)
-        Me.lblMiniOpacity.TabIndex = 2
-        Me.lblMiniOpacity.Text = "PLACEHOLDER TEXT"
-        Me.lblMiniOpacity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        '
-        'tbOMiniPlayer
-        '
-        Me.tbOMiniPlayer.Location = New System.Drawing.Point(19, 30)
-        Me.tbOMiniPlayer.Minimum = 2
-        Me.tbOMiniPlayer.Name = "tbOMiniPlayer"
-        Me.tbOMiniPlayer.Size = New System.Drawing.Size(241, 45)
-        Me.tbOMiniPlayer.TabIndex = 1
-        Me.tbOMiniPlayer.Value = 2
         '
         'frmSettings
         '
@@ -519,15 +459,11 @@ Partial Class frmSettings
         Me.GroupBox1.PerformLayout()
         CType(Me.tbOMain, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tbOCompact, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbOMiniPlayer, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
     Friend WithEvents GenuineTheme1 As GenuineTheme
-    Friend WithEvents tbOMiniPlayer As TrackBar
-    Friend WithEvents btnMiniPlayerOpacityDefault As GenuineButton
-    Friend WithEvents lblMiniOpacity As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents btnMainOpacityDefault As GenuineButton
     Friend WithEvents lblMainOpacity As Label
