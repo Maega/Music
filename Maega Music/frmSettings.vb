@@ -90,7 +90,7 @@
     End Sub
 
     Private Sub GenuineButton1_Click_1(sender As Object, e As EventArgs) Handles GenuineButton1.Click
-        MsgBox("Maega Muse" + vbNewLine + "Maega Muse Client for Microsoft Windows" + vbNewLine + "Version: " + CurrentVer.ToString + " - Bombay Rock Beta" + vbNewLine + "Release Channel: Beta" + vbNewLine + vbNewLine + "This beta release is designed for consumer testing and bleeding edge users interested in trying out pre-release software. The software may change significantly before release and updates may be discontinued for this release channel without notification." + vbNewLine + vbNewLine + "Known Issues:" + vbNewLine + "Switching between players causes the currently playing track to stop.", MsgBoxStyle.Information, "About Maega Music")
+        MsgBox("Maega Muse" + vbNewLine + "Maega Muse Client for Microsoft Windows" + vbNewLine + "Version: " + CurrentVer.ToString + " - Bombay Rock Beta" + vbNewLine + "Release Channel: Beta" + vbNewLine + vbNewLine + "This beta release is designed for consumer testing and bleeding edge users interested in trying out pre-release software. The software may change significantly before release and updates may be discontinued for this release channel without notification.", MsgBoxStyle.Information, "About Maega Music")
     End Sub
 
     Private Sub GenuineButton2_Click(sender As Object, e As EventArgs) Handles btnResetAll.Click
@@ -98,11 +98,8 @@
         If result = DialogResult.Yes Then
             My.Settings.Reset()
             My.Settings.Save()
-            Application.Restart()
+            'Application.Restart() 'Restart isn't working because there's a handle on the form closing event for CompatMode.
+            End 'For now we're using End, it's not good code practise but it's fine for the betas. I'll add a conditional to the closing event before shipping retail.
         End If
-    End Sub
-
-    Private Sub GenuineTheme1_Click(sender As Object, e As EventArgs)
-
     End Sub
 End Class

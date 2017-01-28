@@ -91,6 +91,12 @@ Public Class CompatMode
         e.Cancel = True
         Me.Hide()
 
+        ntfTray.BalloonTipTitle = "Maega Muse is still running"
+        ntfTray.BalloonTipText = "You can access Muse and Compact Mode from the icon in the system tray below."
+        ntfTray.BalloonTipIcon = ToolTipIcon.Info
+        ntfTray.Visible = True
+        ntfTray.ShowBalloonTip(30000)
+
         'Form1.ntfTray.ShowBalloonTip()
     End Sub
 
@@ -127,7 +133,7 @@ Public Class CompatMode
             My.Settings.Save()
             CompactMode.Close()
             Me.Close()
-            'Application.Exit() ''Figure out why this isn't working
+            'Application.Exit() 'Figure out why this isn't working
             End
         End If
     End Sub
@@ -137,8 +143,8 @@ Public Class CompatMode
         'the newly created WebView will be immediately destroyed...
         'e.Accepted = True
 
-        'REMEMBER TO ASSIGN THIS TARGETURL TO A NEW, SMALLER FORM WITH THE TOPMOST AND CENTERPARENT PROPERTIES!
-        'THAT WAY IT'S SEAMLESS INSTEAD OF OPENING SOME TRASH LIKE EDGE FOR SOCIAL SHARING AND AD IMPRESSIONS!!!
+        'REMEMBER TO ASSIGN THIS TARGETURL TO A NEW, SMALLER FORM WITH THE TOPMOST AND CENTERPARENT PROPERTIES
+        'THAT WAY IT'S SEAMLESS INSTEAD OF OPENING SOME TRASH LIKE EDGE FOR SOCIAL SHARING AND AD IMPRESSIONS
 
         Process.Start(e.TargetUrl)
 
@@ -149,6 +155,7 @@ Public Class CompatMode
 
     Sub LicenseEO()
         'Here we add the license for EO.Total so that we can use the EO.WebBrowser library uninhibited by notifications
+        'This is a relatively public license. Stealing it is akin to stealing those free brochures out the front of department stores.
         EO.WebBrowser.Runtime.AddLicense("yuGhWabCnrWfWbP3+hLtmuv5AxC9seLXCNzDf9vKyN/QgbrNwdvBfLDZ+Oi8dab3+hLtmuv5AxC9RoGkseeupeDn9hnynrWRm3Xj7fQQ7azcwp61n1mz8PoO5Kfq6doPvWmstMjitWqstcXnrqXg5/YZ8p7A6M+4iVmXwP0U4p7l9/YQn6fY8fbooX7GsugQ4Xvp8wge5KuZws3a66La6f8e5J61kZvLn3XY8P0a9neEjrHLu5rb6LEf+KncwbPwzme67AMa7J6ZpLEh5Kvq7QAZvFuour/boVmmwp61n1mzs/IX66juwp61n1mz8wMP5KvA8vcan53Y+PbooWmps8HdrmuntcfNn6/c9gQU7qe0psI=")
     End Sub
 
@@ -170,6 +177,7 @@ Public Class CompatMode
 
     Sub ShowHide()
         If Me.Visible = False Then
+            CompactMode.musicControl.Reload() 'Reloads Compact Mode to stop any currently playing music so that it doesn't conflict with the full player.
             Me.Show()
         Else
             Me.Hide()

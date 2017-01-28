@@ -173,7 +173,7 @@ Partial Class CompatMode
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "CompatMode"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Maega Music Beta 1 (Codename Bombay Rock)"
+        Me.Text = "Maega Muse (Beta 1)"
         Me.pnlDark.ResumeLayout(False)
         Me.cxtTray.ResumeLayout(False)
         Me.ResumeLayout(False)

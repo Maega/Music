@@ -13,7 +13,7 @@
         If displayed = False Then
             If Me.Top <= dheight Then
                 tmrAnimation.Stop()
-                CompatMode.musicControl.Reload()
+                CompatMode.musicControl.Reload() 'Reloads Compat Mode to stop any currently playing music so that it doesn't conflict with the compact player.
                 'MsgBox(Screen.PrimaryScreen.WorkingArea.Height.ToString)
                 Me.Location = New Point(dwidth, dheight)
                 displayed = True
