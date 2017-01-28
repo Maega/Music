@@ -111,7 +111,11 @@
                     End If
                     End
                 Catch ex As Exception
-                    MsgBox("Failed to launch MIH", MsgBoxStyle.Exclamation)
+                    If My.Computer.Registry.GetValue(MIHLoc, "AppExe", Nothing) Is Nothing Then
+                        MsgBox("It doesn't look like we could find Maega Innovation Hub installed on your system." + vbNewLine + vbNewLine + "If you installed Muse as a standalone application, you'll need to uninstall Muse and reinstall it through Innovation Hub to qualify for automatic updates.", MsgBoxStyle.Exclamation)
+                    Else
+                        MsgBox("There was a problem launching Innovation Hub, but it does appear to be installed. Please report this issue to support. You can alternatively update Muse through Innovation Hub itself.")
+                    End If
                 End Try
             End If
         End If
