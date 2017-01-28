@@ -2,7 +2,7 @@
 This software is an early beta and is not intended for release, yet.
 Feel free to create pull requests or submit issues.
 
-The latest release of Maega Muse for Windows is available from https://windows.maegamusic.com/
+The latest release of Maega Muse for Windows is available from http://windows.maegamusic.com/
 
 Code contributions which make it into the master branch will be credited to their author.
 
