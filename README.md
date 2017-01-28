@@ -9,5 +9,5 @@ Code contributions which make it into the master branch will be credited to thei
 You'll need the EO.WebBrowser library from Essential Objects for this project.
 You can do this by executing "Install-Package EO.WebBrowser" in NuGet from Visual Studio.
 
-Maega Muse for Windows is offered under the GNU AGPLv3 License.
+Maega Muse for Windows is offered under the GNU GPLv3 License.
 You can read a copy of the license in LICENSE.txt
