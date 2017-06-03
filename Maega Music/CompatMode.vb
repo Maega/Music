@@ -154,9 +154,8 @@ Public Class CompatMode
     End Sub
 
     Sub LicenseEO()
-        'Here we add the license for EO.Total so that we can use the EO.WebBrowser library uninhibited by notifications
-        'This is a relatively public license. Stealing it is akin to stealing those free brochures out the front of department stores.
-        EO.WebBrowser.Runtime.AddLicense("yuGhWabCnrWfWbP3+hLtmuv5AxC9seLXCNzDf9vKyN/QgbrNwdvBfLDZ+Oi8dab3+hLtmuv5AxC9RoGkseeupeDn9hnynrWRm3Xj7fQQ7azcwp61n1mz8PoO5Kfq6doPvWmstMjitWqstcXnrqXg5/YZ8p7A6M+4iVmXwP0U4p7l9/YQn6fY8fbooX7GsugQ4Xvp8wge5KuZws3a66La6f8e5J61kZvLn3XY8P0a9neEjrHLu5rb6LEf+KncwbPwzme67AMa7J6ZpLEh5Kvq7QAZvFuour/boVmmwp61n1mzs/IX66juwp61n1mz8wMP5KvA8vcan53Y+PbooWmps8HdrmuntcfNn6/c9gQU7qe0psI=")
+        'Actual license has been redacted for obvious reasons.
+        EO.WebBrowser.Runtime.AddLicense(EOLicense.LicenseKey)
     End Sub
 
     Private Sub ntfTray_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles ntfTray.MouseDoubleClick
