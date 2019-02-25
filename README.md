@@ -11,3 +11,5 @@ You can do this by executing "Install-Package EO.WebBrowser" in NuGet from Visua
 
 Maega Muse for Windows is offered under the GNU GPLv3 License.
 You can read a copy of the license in LICENSE.txt
+
+### This project is no longer under active development. Feel free to use what's left under GPLv3.
